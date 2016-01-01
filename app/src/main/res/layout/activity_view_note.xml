@@ -100,7 +100,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="#ff000000"
             android:textStyle="bold"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:layout_marginLeft="10dp" />
 <ScrollView
     android:layout_width="match_parent"
@@ -117,5 +117,6 @@
             android:layout_margin="8dp" />
     </ScrollView>
     </RelativeLayout>
+
 
 </RelativeLayout>
