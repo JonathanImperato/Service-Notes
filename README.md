@@ -1,6 +1,6 @@
 # Service-Notes
 
-This is the source code of my first Android app: "Service-Notes".
+Source code of: "Service-Notes".
 
 [Available on the Play Store but currently in Alpha testing](https://play.google.com/store/apps/details?id=notes.service.com.servicenotes)
 
