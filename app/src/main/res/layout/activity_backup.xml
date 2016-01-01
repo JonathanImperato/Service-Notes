@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:fitsSystemWindows="true">
+    <android.support.design.widget.AppBarLayout android:layout_height="wrap_content"
+        android:layout_width="match_parent" android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar android:id="@+id/toolbar"
+            android:layout_width="match_parent" android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary" app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/backup1"
+                android:id="@+id/textView18"
+                android:layout_below="@+id/textView20"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/backup2"
+                android:id="@+id/textView19"
+                android:layout_gravity="center_vertical"
+                android:layout_below="@+id/textView18"
+                android:layout_alignStart="@+id/textView18"
+                android:layout_marginTop="-5dp"
+                android:layout_marginRight="15dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/createbackup"
+                android:id="@+id/textView20"
+                android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/textView18"
+                android:layout_marginTop="70dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/createbackup"
+                android:id="@+id/button2"
+                android:layout_below="@+id/textView19"
+                android:layout_alignStart="@+id/textView19"
+                android:layout_marginTop="15dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/importbackup"
+                android:id="@+id/textView21"
+                android:layout_below="@+id/button2"
+                android:layout_alignStart="@+id/button2"
+                android:layout_marginTop="30dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/importbnote"
+                android:id="@+id/textView22"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/textView21"
+                android:layout_alignStart="@+id/textView21"
+                android:layout_marginRight="15dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/importbackup"
+                android:id="@+id/button"
+                android:layout_below="@+id/textView22"
+                android:layout_alignStart="@+id/textView22"
+                android:layout_marginTop="15dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/deletebackup"
+                android:id="@+id/textView23"
+                android:layout_marginTop="30dp"
+                android:layout_below="@+id/button"
+                android:layout_alignStart="@+id/button" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/deletebnote"
+                android:id="@+id/textView24"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/textView23"
+                android:layout_alignStart="@+id/textView23"
+                android:layout_marginRight="15dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/deletebackup"
+                android:id="@+id/button3"
+                android:layout_below="@+id/textView24"
+                android:layout_alignStart="@+id/textView24"
+                android:layout_marginTop="15dp" />
+
+        </RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>
+

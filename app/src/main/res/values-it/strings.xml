@@ -1,0 +1,187 @@
+<resources>
+    <string name="app_name">Service Notes</string>
+    <string name="firstpopup">Questo contenuto non è ancora disponibile</string>
+    <!-- Other strings -->
+    <string name="other_settings">Altro</string>
+    <string name="other_info">Info</string>
+    <string name="other_library">Librierie</string>
+    <!-- Themes strings -->
+    <string name="theme_myapptheme">Verde</string>
+    <string name="theme_myapptheme2">Viola</string>
+    <string name="themes_summary">Scegli il tema</string>
+    <string name="themes_title">Tema</string>
+    <!-- Libraries strings -->
+    <string name="libraries">Librerie</string>
+    <string name="used_libraries_title">Librerie utilizzate</string>
+    <!-- Backup strings -->
+    <string name="ok">HO CAPITO</string>
+    <string name="backuppopup">Il riavvio è necessario affinchè le modifiche vengano applicate</string>
+    <string name="createbackup">Crea Backup</string>
+    <string name="deletebackup">Resetta App</string>
+    <string name="importbackup">Importa Backup</string>
+    <string name="importbnote">Nota: Se importi un Backup perderai tutte le note attuali</string>
+    <string name="deletebnote">Cliccando Resetta perderai tutte le tue attuali note</string>
+    <string name="backup1">Il Backup esportera tutte le tue note in questa cartella.</string>
+    <string name="backup2">Cartella di Backup: /storage/sdcard/ServiceNotes</string>
+    <!-- Animations strings -->
+    <string name="animations_summary">Attiva o disattiva le animazioni</string>
+    <string name="animations_title">Animazioni</string>
+    <!-- Languages strings -->
+    <string name="language_settings">Lingua</string>
+    <string name="language_title">Imposta lingua</string>
+    <string name="language_summary">Imposta la lingua dell\'app</string>
+    <string name="help_translating_title">Aiuta a tradurre</string>
+    <string name="help_translating_summary">Collabora a questo progetto ed aiutaci a tradurre l\'app</string>
+    <!-- Other strings -->
+    <string name="navigation_drawer_open">Apri il navigation drawer</string>
+    <string name="navigation_drawer_close">Chiudi il navigation drawer</string>
+    <string name="donate2">Con PayPal potete effettuare una donazione completamente volontaria dove siete voi a decidere la quota, Google Play attualmente non supporta questa funzione ma potete donare delle cifre già impostate. Grazie per il supporto</string>
+    <string name="donate">Molte persone hanno espresso il desiderio di fare una donazione per sostenere lo sviluppo di questa app.</string>
+    <string name="Home">Home</string>
+    <string name="Note">Note</string>
+    <string name="hint_book_content">Pubblicazioni</string>
+    <string name="Comunica">Comunica</string>
+    <string name="accept">Accetta</string>
+    <string name="action_bug">Riporta un Bug</string>
+    <string name="action_donate">Funzione nascosta</string>
+    <string name="action_donate2">Dona</string>
+    <string name="action_info">Questa app è stata sviluppata da Jonathan Imperato</string>
+    <string name="action_rate">Valuta</string>
+    <string name="action_settings">Impostazioni</string>
+    <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
+    <string name="auth_google_play_services_client_facebook_display_name">Facebook</string>
+    <string name="auth_google_play_services_client_google_display_name">Google</string>
+    <string name="cast_notification_connected_message">Connesso a <g id="name">%1$s</g></string>
+    <string name="cast_notification_connecting_message">Connesso a <g id="name">%1$s</g></string>
+    <string name="cast_notification_disconnect">Disconnesso</string>
+    <string name="customization_settings">Personalizza</string>
+    <string name="decline">Annulla</string>
+    <string name="share">Condividi </string>
+    <string name="done_button">Fatto</string>
+    <string name="gcm_defaultSenderId">482450084677</string>
+    <string name="gittyreporter_action_settings">Impostazioni</string>
+    <string name="gittyreporter_app_name">Gitty Reporter</string>
+    <string name="gittyreporter_description">Descrivi il tuo problema</string>
+    <string name="gittyreporter_device_info">Informazioni sul tuo dispositivo:</string>
+    <string name="gittyreporter_headline1">Riporta un nuovo problema</string>
+    <string name="gittyreporter_headline2">Accedi a GitHub</string>
+    <string name="gittyreporter_hello_world">Hello world!</string>
+    <string name="gittyreporter_login_password">Password:</string>
+    <string name="gittyreporter_login_skip">"Non ho un account"</string>
+    <string name="gittyreporter_login_username">Nome utente:</string>
+    <string name="gittyreporter_title">Titolo</string>
+    <string name="hello_world">Ciao mondo!</string>
+    <string name="restart_text_popup">Il riavvio è necessario affinchè le modifiche vengano applicate</string>
+    <string name="skip">Prosegui</string>
+    <string name="skip_button">Prosegui</string>
+    <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="store_picture_message">Allow Ad to store image in Picture gallery?</string>
+    <string name="store_picture_title">Save image</string>
+    <string name="database_summary">"Select database preference"</string>
+    <string name="database_title">Backup</string>
+    <string name="title_activity_my_intro">MyIntro</string>
+    <string name="title_activity_settings">Impostazioni</string>
+    <string name="title_section1">HomePage</string>
+    <string name="title_section2">Note</string>
+    <string name="title_section3">Rapporto</string>
+    <string name="action_backup">Backup e Ripristino</string>
+    <string name="backupinfo">I backup vengono salvati nella cartella "ServiceNotes". Se volete importare un databse controllate che sia nella cartella corretta</string>
+    <!-- MainActivity strings -->
+    <string name="title_activity_notes_list">Note</string>
+    <string name="no_notes">Nessuna Nota</string>
+    <string name="action_delete">Elimina</string>
+    <string name="action_about_notice">A riguardo</string>
+    <string name="action_licenses_notice">Open source licenses</string>
+    <string name="delete_notes_alert">Eliminare %s nota(e)?</string>
+
+    <!-- Licenses dialog -->
+    <string name="dialog_licenses_notice_title">Open source licenses</string>
+
+    <!-- About dialog -->
+    <string name="version_format">Version %s</string>
+    <string name="copyright_info">&#169; Daniel Pedraza-Arcega</string>
+    <string name="drawerversion">Service Notes</string>
+    <string name="other">Altro...</string>
+    <!-- EditNoteActivity strings -->
+    <string name="title_activity_edit_note">Modifica nota</string>
+    <string name="action_save">Salva</string>
+    <string name="action_note">Aggiungi Nota</string>
+    <string name="Press_to_close">Premi per chiudere</string>
+    <string name="database">Database</string>
+
+    <string name="title_activity_oauth">OAuthActivity</string> <string name="restart_text_language_popup">The app needs to be restarted for the language change to be activated.\n\nWARNING: Custom languages may not be accurate.</string>
+
+
+    <string name="title_activity_display_file">DisplayFileActivity</string>
+    <string name="title_activity_upload_file">UploadFileActivity</string>
+    <string name="title_activity_download_file">DownloadFileActivity</string>
+    <string name="title_activity_retrieve_contents_file">RetrieveContentsActivity</string>
+    <string name="title_activity_connection">ConnectionActivity</string>
+    <string name="title_activity_read_file">ReadFile</string>
+
+
+    <string name="hint_note_title">Titolo</string>
+    <string name="hint_note_content">Descrizione</string>
+    <string name="title_required">La nota deve avere un titolo</string>
+    <string name="content_required">La nota deve avere una descrizione</string>
+
+    <!-- ViewNoteActivity strings -->
+    <string name="title_activity_view_note">Nota</string>
+    <string name="action_edit_note">Modifica nota</string>
+    <string name="label_created_at">Creata alle:</string>
+    <string name="label_updated_at">Aggiornata alle:</string>
+    <!-- Example General settings -->
+    <string name="pref_header_general">Generale</string>
+
+    <string name="pref_title_social_recommendations">Abilita raccomandazioni via socials</string>
+    <string name="pref_description_social_recommendations">Raccomandazioni per le persone affinche ti contattino sulla base dei tuoi messaggi</string>
+
+    <string name="pref_title_display_name">Mostra oame</string>
+    <string name="pref_default_display_name">John Smith</string>
+
+    <string name="pref_title_add_friends_to_messages">Aggiungi amici ai messaggi</string>
+    <string-array name="pref_example_list_titles">
+        <item>Sempre</item>
+        <item>Quando possibile</item>
+        <item>Mai</item>
+    </string-array>
+    <string-array name="pref_example_list_values">
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+    </string-array>
+
+    <!-- Example settings for Data & Sync -->
+    <string name="pref_header_data_sync">Data &amp; Syncronizzazione</string>
+
+    <string name="pref_title_sync_frequency">Frequenza Syncronizzazione</string>
+    <string-array name="pref_sync_frequency_titles">
+        <item>15 minuti</item>
+        <item>30 minuti</item>
+        <item>1 ore</item>
+        <item>3 ore</item>
+        <item>6 ore</item>
+        <item>Mai</item>
+    </string-array>
+    <string-array name="pref_sync_frequency_values">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>180</item>
+        <item>360</item>
+        <item>-1</item>
+    </string-array>
+
+    <string name="pref_title_system_sync_settings">Impostazione syncronizzazione sistema</string>
+
+    <!-- Example settings for Notifications -->
+    <string name="pref_header_notifications">Notifiche</string>
+
+    <string name="pref_title_new_message_notifications">Nuova notifica messaggi</string>
+
+    <string name="pref_title_ringtone">Vibrazione</string>
+    <string name="pref_ringtone_silent">Silenzioso</string>
+
+    <string name="pref_title_vibrate">Vibra</string>
+
+</resources>

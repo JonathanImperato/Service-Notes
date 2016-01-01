@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="color_primary" format="color|reference" />
+    <attr name="color_primary_dark" format="color|reference" />
+    <attr name="colorPrimaryMiddle" format="color|reference" />
+    <attr name="color_accent" format="color|reference" />
+    <attr name="selected_note" format="color|reference" />
+</resources>

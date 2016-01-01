@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/nav_camara" android:icon="@drawable/backup"
+            android:title="Backup" />
+    </group>
+    <item android:title="@string/Comunica">
+        <menu>
+            <item android:id="@+id/nav_share" android:icon="@drawable/ic_share"
+                android:title="@string/share" />
+            <item android:id="@+id/action_bug" android:title="@string/action_bug"
+                android:icon="@drawable/ic_bug"
+                />
+        </menu>
+    </item>
+
+</menu>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    <android.support.design.widget.CoordinatorLayout android:layout_width="match_parent"
+        android:layout_height="match_parent" android:fitsSystemWindows="true" >
+        <android.support.design.widget.AppBarLayout android:layout_height="wrap_content"
+            android:layout_width="match_parent" android:theme="@style/AppTheme.AppBarOverlay"
+            android:id="@+id/textView16">
+
+            <android.support.v7.widget.Toolbar android:id="@+id/toolbar"
+                android:layout_width="match_parent" android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary" app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        </android.support.design.widget.AppBarLayout>
+
+    </android.support.design.widget.CoordinatorLayout>
+    <requestFocus />
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/text_input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:layout_alignParentTop="true"
+        android:textColorHint="@color/white"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/TextLabel">
+
+        <EditText
+            android:id="@+id/note_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_note_title"
+            android:textColor="#fff"
+            android:paddingLeft="20dp"
+            android:singleLine="true"
+            android:ellipsize="end"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/text_input_layout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/text_input_layout"
+        android:layout_alignParentStart="true">
+
+    <EditText
+        android:id="@+id/note_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="start"
+        android:inputType="textMultiLine"
+        android:hint="@string/hint_note_content"
+        android:layout_below="@+id/text_input_layout"
+        android:layout_alignParentStart="true"
+        android:paddingLeft="20dp" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.FloatingActionButton android:id="@+id/action_save"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:src="@drawable/ic_action_save"
+        app:backgroundTint="?attr/colorAccent"
+        android:layout_marginLeft="@dimen/fab_margin"
+        android:layout_marginRight="@dimen/fab_margin"
+        android:layout_marginEnd="39dp"
+        android:layout_marginTop="-20dp"
+        app:fabSize="mini"
+        android:layout_below="@+id/text_input_layout"
+        android:layout_alignParentEnd="true"
+        android:title="@string/action_save" />
+</RelativeLayout>
