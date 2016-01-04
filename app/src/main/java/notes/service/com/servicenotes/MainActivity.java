@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.speech.RecognizerIntent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -17,10 +18,13 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.view.ActionMode;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -56,8 +60,8 @@ public class MainActivity extends RoboActionBarActivity
     private NotesAdapter listAdapter;
     private ActionMode.Callback actionModeCallback;
     private ActionMode actionMode;
-    protected String _searchCurrentQuery;
     public static final int firstpopup = 0;
+    public static final int feedback = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,8 +70,11 @@ public class MainActivity extends RoboActionBarActivity
         ServiceUtils.setSavedTheme(this);
         ServiceUtils.setSavedLanguage(this);
         setContentView(R.layout.activity_main);
+        final EditText name = (EditText) findViewById(R.id.name);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
         // Set App version to the nav drawer
        /* TextView textViewversionName = (TextView) findViewById(R.id.appversion);
 
@@ -92,6 +99,7 @@ public class MainActivity extends RoboActionBarActivity
             }
 
         });
+
         selectedPositions = new ArrayList<>();
         setupNotesAdapter();
         setupActionModeCallback();
@@ -129,8 +137,13 @@ public class MainActivity extends RoboActionBarActivity
             @Override
             public boolean onQueryTextChange(String newText) {
                 //Do some magic
-                searchAction(newText);
-
+            /*    if (TextUtils.isEmpty(newText.toString())) {
+                    ListView.clearTextFilter();
+                } else {
+                    ListView.setFilterText(newText);
+                }
+                return true;
+*/
                 return false;
             }
         });
@@ -232,7 +245,10 @@ public class MainActivity extends RoboActionBarActivity
 
         } else if (id == R.id.nav_manage) {
 
-        } */ else if (id == R.id.nav_share) {
+        } */ else if (id == R.id.nav_feed) {
+            showDialog(feedback);
+
+        } else if (id == R.id.nav_share) {
             Intent i2 = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=notes.service.com.servicenotes"));
             startActivity(i2);
 
@@ -295,6 +311,67 @@ public class MainActivity extends RoboActionBarActivity
                                 }
                         )
                         .create();
+            case feedback:
+                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+                LayoutInflater inflater = this.getLayoutInflater();
+                final View dialogView = inflater.inflate(R.layout.dialoginputmessage, null);
+                dialogBuilder.setView(dialogView);
+
+                final EditText message = (EditText) dialogView.findViewById(R.id.name);
+
+                dialogBuilder.setTitle("Feedback");
+                dialogBuilder.setIcon(R.drawable.ic_tag_faces_black_48dp);
+                dialogBuilder.setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                //nothing to show
+                                if (findViewById(R.id.name) != null) {
+                                    message.getText().clear();
+                                }
+                            }
+                        }
+                );
+                dialogBuilder.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int whichButton) {
+
+                                GMailSender sender = new GMailSender("Service Notes email", "service notes email's password");
+                                try {
+                                    sender.sendMail("Service Notes feedback",
+                                            message.getText().toString(),
+                                            "Service Notes email", //da...
+                                            "My personal email"); //a ...
+                                    Snackbar.make(MainActivity.this.findViewById(R.id.fab), getString(R.string.feedbacksent), Snackbar.LENGTH_LONG).setAction("Action", null).show();
+
+                                } catch (Exception e) {
+                                    Log.e("SendMail failed", e.getMessage(), e);
+                                    Snackbar.make(MainActivity.this.findViewById(R.id.fab), getString(R.string.feedbacknotsent), Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                                }
+                            }
+                        }
+                );
+                  /* alternative way with more than 1 receiver and with attachment
+                                       Mail m = new Mail("...", "...
+
+                                        String[] toArr = {"...", "..."};
+                                        m.setTo(toArr); //inviare l'email a...
+                                        m.setFrom("...e da...
+                                        m.setSubject("Service Notes Subject");
+                                        m.setBody("Email body.");
+
+                                        try {
+                                         //   m.addAttachment("/sdcard/filelocation");
+                                            if(m.send()) {
+                                                Toast.makeText(MainActivity.this, "Email was sent successfully.", Toast.LENGTH_LONG).show();
+                                            } else {
+                                                Toast.makeText(MainActivity.this, "Email was not sent.", Toast.LENGTH_LONG).show();
+                                            }
+                                        } catch(Exception e) {
+                                            Toast.makeText(MainActivity.this, "There was a problem sending the email.", Toast.LENGTH_LONG).show();
+                                            Log.e("MailApp", "Could not send email", e);
+                                        }
+
+                                        */
+                AlertDialog b = dialogBuilder.create();
+                b.show();
         }
         return super.onCreateDialog(id);
     }
@@ -303,6 +380,7 @@ public class MainActivity extends RoboActionBarActivity
     /**
      * Crea la llamada al modo contextual.
      */
+
     private void setupActionModeCallback() {
         actionModeCallback = new ActionMode.Callback() {
 
@@ -508,5 +586,6 @@ public class MainActivity extends RoboActionBarActivity
             }
         });
     }
+
 
 }

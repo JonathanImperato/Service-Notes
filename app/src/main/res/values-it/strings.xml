@@ -41,8 +41,9 @@
     <string name="Note">Note</string>
     <string name="hint_book_content">Pubblicazioni</string>
     <string name="Comunica">Comunica</string>
+    <string name="feed">Feedback</string>
     <string name="accept">Accetta</string>
-    <string name="action_bug">Riporta un Bug</string>
+    <string name="action_bug">Riporta un problema</string>
     <string name="action_donate">Funzione nascosta</string>
     <string name="action_donate2">Dona</string>
     <string name="action_info">Questa app è stata sviluppata da Jonathan Imperato</string>
@@ -88,6 +89,11 @@
     <string name="backupinfo">I backup vengono salvati nella cartella "ServiceNotes". Se volete importare un databse controllate che sia nella cartella corretta</string>
     <!-- MainActivity strings -->
     <string name="title_activity_notes_list">Note</string>
+    <string name="yes">Si</string>
+    <string name="cancel">Annulla</string>
+    <string name="feedbacknotsent">Feedback non inviato, ci dispiace</string>
+    <string name="feedbacksent">Feedback inviato con successo</string>
+    <string name="feedbackmsg">Inserisci il tuo feedback</string>
     <string name="no_notes">Nessuna Nota</string>
     <string name="action_delete">Elimina</string>
     <string name="action_about_notice">A riguardo</string>

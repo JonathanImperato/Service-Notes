@@ -42,6 +42,7 @@
     <string name="Home">Home</string>
     <string name="Note">Note</string>
     <string name="hint_book_content">Pubblications</string>
+    <string name="feed">Feedback</string>
     <string name="Comunica">Talk</string>
     <string name="accept">Acept</string>
     <string name="action_bug">Report an issue</string>
@@ -89,6 +90,11 @@
     <string name="action_backup">Backup and Restore</string>
     <string name="backupinfo">Backups are saved in the "ServiceNotes" \'s folder. If you want to import a database check first it is in the correct folder</string>
     <!-- MainActivity strings -->
+    <string name="yes">Yes</string>
+    <string name="cancel">Cancel</string>
+    <string name="feedbacknotsent">Feedback not sent, sorry</string>
+    <string name="feedbacksent">Feedback sent succesfully</string>
+    <string name="feedbackmsg">Enter your feedback</string>
     <string name="title_activity_notes_list">Note</string>
     <string name="no_notes">No Notes</string>
     <string name="action_delete">Delete</string>

@@ -1,13 +1,17 @@
 package notes.service.com.servicenotes.widget;
 
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import notes.service.com.servicenotes.R;
@@ -19,13 +23,26 @@ import notes.service.com.servicenotes.data.Note;
  * @author Daniel Pedraza Arcega
  * @see <a href="http://bit.ly/1vZt3ny">Building Layouts with an Adapter</a>
  */
-public class NotesAdapter extends BaseAdapter {
-    /** Wrapper para notas. Util para cambiar el fondo de los item seleccionados. */
+public class NotesAdapter extends BaseAdapter implements Filterable {
+    /**
+     * Wrapper para notas. Util para cambiar el fondo de los item seleccionados.
+     */
     public static final String KEY_TITLE = "title";
     public static final String KEY_BODY = "body";
     public static final String KEY_CATID = "id";
     private static final String DATABASE_TABLE = "notes_schema-v%s.sql";
     private SQLiteDatabase mDb;
+    private ArrayList<NotesAdapter.NoteViewWrapper> notesData;
+    public Context context;
+    public ArrayList<Integer> employeeArrayList;
+    public ArrayList<Integer> orig;
+
+    @Override
+    public Filter getFilter() {
+
+        return null;
+    }
+
     public static class NoteViewWrapper {
 
         private final Note note;
@@ -62,7 +79,9 @@ public class NotesAdapter extends BaseAdapter {
         this.data = data;
     }
 
-    /** @return cuantos datos hay en la lista de notas. */
+    /**
+     * @return cuantos datos hay en la lista de notas.
+     */
     @Override
     public int getCount() {
         return data.size();
@@ -102,62 +121,17 @@ public class NotesAdapter extends BaseAdapter {
         holder.noteContentText.setText(noteViewWrapper.note.getContent().length() >= 80 ? noteViewWrapper.note.getContent().substring(0, 80).concat("...") : noteViewWrapper.note.getContent());
         holder.noteDateText.setText(DATETIME_FORMAT.format(noteViewWrapper.note.getUpdatedAt()));
         // Cambia el color del fondo si es seleccionado
-        if (noteViewWrapper.isSelected) holder.parent.setBackgroundColor(parent.getContext().getResources().getColor(R.color.selected_note));
-        // Sino lo regresa a transparente
-        else holder.parent.setBackgroundColor(parent.getContext().getResources().getColor(android.R.color.transparent));
+        if (noteViewWrapper.isSelected)
+            holder.parent.setBackgroundColor(parent.getContext().getResources().getColor(R.color.selected_note));
+            // Sino lo regresa a transparente
+        else
+            holder.parent.setBackgroundColor(parent.getContext().getResources().getColor(android.R.color.transparent));
         return convertView;
     }
 
-   /* public String createJsonFromNotes(){
-        List<Note> noteList = new ArrayList<>();
-        String orderBy = NotesAdapter.KEY_TITLE + " ASC";
-        Cursor cursor = mDb.query(DATABASE_TABLE, new String[] { KEY_CATID, KEY_TITLE,
-                KEY_BODY}, null, null, null, null, orderBy);
-        if (cursor.moveToFirst()) {
-            do {
-                Note note = new Note();
-                note.setId(0);
-                note.setTitle(cursor.getString(cursor.getColumnIndex(NotesAdapter.KEY_TITLE)));
-                note.setContent(cursor.getString(cursor.getColumnIndex(NotesAdapter.KEY_BODY)));
-                noteList.add(note);
-            } while (cursor.moveToNext());
-        }
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        //Use GSON to serialize Array List to JSON
-        System.out.println(gson.toJson(noteList));
-
-        return gson.toJson(noteList);
-    }
-
-    public void createNotesFromJson(String json) {
-        System.out.println(json);
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        List<Note> noteList = gson.fromJson(json, new TypeToken<List<Note>>() {
-        }.getType());
-
-        for (Note note : noteList) {
-            createNote(note.getTitle(),  note.getContent(), note.getId());
-        }
-    }
-
-    public long createNote(String title, String body) {
-        ContentValues initialValues = new ContentValues();
-        initialValues.put(KEY_TITLE, title);
-        initialValues.put(KEY_BODY, body);
-        initialValues.put(KEY_CATID, 0);
-
-        return mDb.insert(DATABASE_TABLE, null, initialValues);
-    }
-
-    public long createNote(String title, String body, int Id) {
-        ContentValues initialValues = new ContentValues();
-        initialValues.put(KEY_TITLE, title);
-        initialValues.put(KEY_BODY, body);
-        initialValues.put(KEY_CATID, Id);
-
-        return mDb.insert(DATABASE_TABLE, null, initialValues);
-    }*/
-    /** Almacena componentes visuales para acceso rápido sin necesidad de buscarlos muy seguido.*/
+    /**
+     * Almacena componentes visuales para acceso rápido sin necesidad de buscarlos muy seguido.
+     */
     private static class ViewHolder {
 
         private TextView noteIdText;

@@ -63,7 +63,17 @@
                 android:gravity="center"
                 android:text="@string/no_notes"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
+            <FrameLayout
+                android:id="@+id/feedback_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+                <include
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    layout="@layout/dialoginputmessage" />
 
+                </FrameLayout>
         </RelativeLayout>
 
         <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
