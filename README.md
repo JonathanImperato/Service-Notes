@@ -17,3 +17,6 @@ Used libraries
 [AboutLibraries](https://github.com/mikepenz/AboutLibraries)<br>
 [AppIntro](https://github.com/PaoloRotolo/AppIntro)<br>
 [GittyReporter](https://github.com/PaoloRotolo/GittyReporter)<br>
+[MaterialSearchView](https://github.com/MiguelCatalan/MaterialSearchView)<br>
+
+

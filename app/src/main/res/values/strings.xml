@@ -22,7 +22,7 @@
     <string name="importbackup">Import Backup</string>
     <string name="importbnote">Note: If you import a new Backup you will lose all the current notes</string>
     <string name="deletebnote">If you click here you will reset the app and lose all the current notes</string>
-    <string name="backup1">The Backup will export all your notes in this folder:</string>
+    <string name="backup1">The Backup will export all your notes in this folder: Backup folder: /storage/sdcard/ServiceNotes</string>
     <string name="backup2">Backup folder: /storage/sdcard/ServiceNotes</string>
     <!-- Animations strings -->
     <string name="animations_summary">Enable or disable animations</string>

@@ -21,7 +21,7 @@
     <string name="importbackup">Importa Backup</string>
     <string name="importbnote">Nota: Se importi un Backup perderai tutte le note attuali</string>
     <string name="deletebnote">Cliccando Resetta perderai tutte le tue attuali note</string>
-    <string name="backup1">Il Backup esportera tutte le tue note in questa cartella.</string>
+    <string name="backup1">Il Backup esportera tutte le tue note in questa cartella: Cartella di Backup: /storage/sdcard/ServiceNotes</string>
     <string name="backup2">Cartella di Backup: /storage/sdcard/ServiceNotes</string>
     <!-- Animations strings -->
     <string name="animations_summary">Attiva o disattiva le animazioni</string>

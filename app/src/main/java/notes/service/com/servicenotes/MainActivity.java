@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.speech.RecognizerIntent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -15,12 +16,15 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.view.ActionMode;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
 import java.util.ArrayList;
 
@@ -52,7 +56,7 @@ public class MainActivity extends RoboActionBarActivity
     private NotesAdapter listAdapter;
     private ActionMode.Callback actionModeCallback;
     private ActionMode actionMode;
-
+    protected String _searchCurrentQuery;
     public static final int firstpopup = 0;
 
     @Override
@@ -61,7 +65,6 @@ public class MainActivity extends RoboActionBarActivity
         super.onCreate(savedInstanceState);
         ServiceUtils.setSavedTheme(this);
         ServiceUtils.setSavedLanguage(this);
-        // ServiceUtils.onActivityCreateSetTheme(this);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -115,7 +118,36 @@ public class MainActivity extends RoboActionBarActivity
             editor.putBoolean("firstRun", false);
             editor.commit();
         }
+        MaterialSearchView searchView = (MaterialSearchView) findViewById(R.id.search_view);
+        searchView.setVoiceSearch(true);
+        searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                //Do some magic
+                searchAction(newText);
+
+                return false;
+            }
+        });
+
+        searchView.setOnSearchViewListener(new MaterialSearchView.SearchViewListener() {
+            @Override
+            public void onSearchViewShown() {
+                //Do some magic
+            }
+
+            @Override
+            public void onSearchViewClosed() {
+                //Do some magic
+            }
+        });
     }
+
     @Override
     public void onResume() {
         super.onResume();
@@ -123,11 +155,17 @@ public class MainActivity extends RoboActionBarActivity
 
     }
 
+    protected void searchAction(String query) {
+        //search action
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+        MenuItem item = menu.findItem(R.id.action_search);
+        MaterialSearchView searchView = (MaterialSearchView) findViewById(R.id.search_view);
+        searchView.setMenuItem(item);
         return true;
     }
 
@@ -156,8 +194,14 @@ public class MainActivity extends RoboActionBarActivity
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        MaterialSearchView searchView = (MaterialSearchView) findViewById(R.id.search_view);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+        if (searchView.isSearchOpen()) {
+            searchView.closeSearch();
         } else {
             super.onBackPressed();
         }
@@ -207,13 +251,24 @@ public class MainActivity extends RoboActionBarActivity
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        MaterialSearchView searchView = (MaterialSearchView) findViewById(R.id.search_view);
         if (requestCode == NEW_NOTE_RESULT_CODE) {
             if (resultCode == RESULT_OK) addNote(data);
         }
         if (requestCode == EDIT_NOTE_RESULT_CODE) {
             if (resultCode == RESULT_OK) updateNote(data);
         }
+        if (requestCode == MaterialSearchView.REQUEST_VOICE && resultCode == RESULT_OK) {
+            ArrayList<String> matches = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+            if (matches != null && matches.size() > 0) {
+                String searchWrd = matches.get(0);
+                if (!TextUtils.isEmpty(searchWrd)) {
+                    searchView.setQuery(searchWrd, false);
+                }
+            }
 
+            return;
+        }
         super.onActivityResult(requestCode, resultCode, data);
     }
 
@@ -377,7 +432,7 @@ public class MainActivity extends RoboActionBarActivity
             // Buscar la nota vieja para actulizarla en la vista
             if (noteViewWrapper.getNote().getId().equals(updatedNote.getId())) {
                 noteViewWrapper.getNote().setTitle(updatedNote.getTitle());
-               // noteViewWrapper.getNote().setBook(updatedNote.getBook());
+                // noteViewWrapper.getNote().setBook(updatedNote.getBook());
                 noteViewWrapper.getNote().setContent(updatedNote.getContent());
                 noteViewWrapper.getNote().setUpdatedAt(updatedNote.getUpdatedAt());
 
@@ -453,6 +508,5 @@ public class MainActivity extends RoboActionBarActivity
             }
         });
     }
-
 
 }
