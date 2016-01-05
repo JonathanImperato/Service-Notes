@@ -88,8 +88,18 @@
     <string name="action_backup">Backup e Ripristino</string>
     <string name="backupinfo">I backup vengono salvati nella cartella "ServiceNotes". Se volete importare un databse controllate che sia nella cartella corretta</string>
     <!-- MainActivity strings -->
+    <string-array name="query_suggestions">
+        <item>Note</item>
+        <item>Nota</item>
+        <item>Signor</item>
+        <item>Signora</item>
+        <item>Vecchio</item>
+        <item>Vecchia</item>
+        <item>Giovane</item>
+        <item>Marroni</item>
+    </string-array>
     <string name="title_activity_notes_list">Note</string>
-    <string name="yes">Si</string>
+    <string name="yes">Invia</string>
     <string name="cancel">Annulla</string>
     <string name="feedbacknotsent">Feedback non inviato, ci dispiace</string>
     <string name="feedbacksent">Feedback inviato con successo</string>

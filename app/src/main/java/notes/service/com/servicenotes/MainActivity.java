@@ -70,22 +70,18 @@ public class MainActivity extends RoboActionBarActivity
         ServiceUtils.setSavedTheme(this);
         ServiceUtils.setSavedLanguage(this);
         setContentView(R.layout.activity_main);
-        final EditText name = (EditText) findViewById(R.id.name);
+        // set the app version on the nav drawer
+       // View inflatedView = getLayoutInflater().inflate(R.layout.nav_header_main, null);
+        String versionName = BuildConfig.VERSION_NAME;
+        TextView versionname = (TextView) findViewById(R.id.app_version_number);
+        versionname.setText("Version: " + versionName);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        //To make the email sending working
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         // Set App version to the nav drawer
-       /* TextView textViewversionName = (TextView) findViewById(R.id.appversion);
-
-        try {
-            PackageInfo packageInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
-            textViewversionName.setText(packageInfo.versionName);
-
-        }
-        catch (PackageManager.NameNotFoundException e) {
-
-        }*/
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,6 +124,7 @@ public class MainActivity extends RoboActionBarActivity
         }
         MaterialSearchView searchView = (MaterialSearchView) findViewById(R.id.search_view);
         searchView.setVoiceSearch(true);
+        //searchView.setSuggestions(getResources().getStringArray(R.array.query_suggestions));
         searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -143,7 +140,7 @@ public class MainActivity extends RoboActionBarActivity
                     ListView.setFilterText(newText);
                 }
                 return true;
-*/
+                */
                 return false;
             }
         });
@@ -333,12 +330,12 @@ public class MainActivity extends RoboActionBarActivity
                 dialogBuilder.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton) {
 
-                                GMailSender sender = new GMailSender("Service Notes email", "service notes email's password");
+                                GMailSender sender = new GMailSender("sss@gmail.com", "sss");
                                 try {
                                     sender.sendMail("Service Notes feedback",
                                             message.getText().toString(),
-                                            "Service Notes email", //da...
-                                            "My personal email"); //a ...
+                                            "sss@gmail.com", //da...
+                                            "ss@gmail.com"); //a ...
                                     Snackbar.make(MainActivity.this.findViewById(R.id.fab), getString(R.string.feedbacksent), Snackbar.LENGTH_LONG).setAction("Action", null).show();
 
                                 } catch (Exception e) {
@@ -349,11 +346,11 @@ public class MainActivity extends RoboActionBarActivity
                         }
                 );
                   /* alternative way with more than 1 receiver and with attachment
-                                       Mail m = new Mail("...", "...
+                                       Mail m = new Mail("my email ", "my password");
 
-                                        String[] toArr = {"...", "..."};
+                                        String[] toArr = {"recivers email1", "recivers email2"};
                                         m.setTo(toArr); //inviare l'email a...
-                                        m.setFrom("...e da...
+                                        m.setFrom("email sent from"); //l'email viene da...
                                         m.setSubject("Service Notes Subject");
                                         m.setBody("Email body.");
 

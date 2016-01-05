@@ -34,20 +34,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="@string/backup2"
-            android:id="@+id/textView19"
-            android:layout_gravity="center_vertical"
-            android:layout_below="@+id/textView18"
-            android:layout_alignStart="@+id/textView18"
-            android:layout_marginTop="-5dp"
-            android:layout_marginRight="15dp"
-            android:layout_alignParentEnd="false"
-            android:layout_alignParentStart="false" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/createbackup"
             android:id="@+id/textView20"
@@ -62,11 +48,11 @@
             android:layout_height="wrap_content"
             android:text="@string/createbackup"
             android:id="@+id/button2"
-            android:layout_below="@+id/textView19"
-            android:layout_alignStart="@+id/textView19"
             android:layout_marginTop="15dp"
             android:layout_alignParentEnd="false"
-            android:layout_alignParentStart="false" />
+            android:layout_alignParentStart="false"
+            android:layout_below="@+id/textView18"
+            android:layout_alignStart="@+id/textView18" />
 
         <TextView
             android:layout_width="wrap_content"

@@ -90,7 +90,16 @@
     <string name="action_backup">Backup and Restore</string>
     <string name="backupinfo">Backups are saved in the "ServiceNotes" \'s folder. If you want to import a database check first it is in the correct folder</string>
     <!-- MainActivity strings -->
-    <string name="yes">Yes</string>
+    <string-array name="query_suggestions">
+        <item>Note</item>
+        <item>Notes</item>
+        <item>Mr</item>
+        <item>Mrs</item>
+        <item>Old</item>
+        <item>Young</item>
+        <item>Brown</item>
+    </string-array>
+    <string name="yes">Send</string>
     <string name="cancel">Cancel</string>
     <string name="feedbacknotsent">Feedback not sent, sorry</string>
     <string name="feedbacksent">Feedback sent succesfully</string>

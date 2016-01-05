@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <style name="MyAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="windowNoTitle">true</item>
         <item name="windowActionModeOverlay">true</item>
@@ -53,29 +53,21 @@
     </style>
     <style name="MaterialSearchViewStyle">
         <!-- Background for the search bar -->
-        <item name="searchBackground">@color/colorPrimary</item>
-
+        <item name="searchBackground">?attr/colorPrimary</item>
         <!-- Change voice icon -->
         <item name="searchVoiceIcon">@drawable/ic_action_voice_search_inverted</item>
-
         <!-- Change clear text icon -->
         <item name="searchCloseIcon">@drawable/ic_action_navigation_close_inverted</item>
-
         <!-- Change up icon -->
         <item name="searchBackIcon">@drawable/ic_action_navigation_arrow_back_inverted</item>
-
         <!-- Change icon for the suggestions -->
         <item name="searchSuggestionIcon">@drawable/ic_suggestion</item>
-
         <!-- Change background for the suggestions list view -->
         <item name="searchSuggestionBackground">@android:color/white</item>
-
         <!-- Change text color for edit text. This will also be the color of the cursor -->
         <item name="android:textColor">@color/white</item>
-
         <!-- Change hint text color for edit text -->
         <item name="android:textColorHint">@color/white</item>
-
         <!-- Hint for edit text -->
         <item name="android:hint">@string/search_hint</item>
     </style>
