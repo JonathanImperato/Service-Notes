@@ -121,7 +121,7 @@
     <string name="title_activity_connection">ConnectionActivity</string>
     <string name="title_activity_read_file">ReadFile</string>
     <!-- About dialog -->
-    <string name="version_format">Version %s</string>
+    <string name="version_format">Version:</string>
     <string name="copyright_info">&#169; Daniel Pedraza-Arcega</string>
     <string name="drawerversion">Service Notes</string>
     <string name="other">Other</string>

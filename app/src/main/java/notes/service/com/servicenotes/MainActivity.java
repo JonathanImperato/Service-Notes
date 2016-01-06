@@ -27,13 +27,9 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
-
 import java.util.ArrayList;
-
 import javax.inject.Inject;
-
 import notes.service.com.servicenotes.data.Note;
 import notes.service.com.servicenotes.data.dao.NoteDAO;
 import notes.service.com.servicenotes.widget.NotesAdapter;
@@ -70,11 +66,15 @@ public class MainActivity extends RoboActionBarActivity
         ServiceUtils.setSavedTheme(this);
         ServiceUtils.setSavedLanguage(this);
         setContentView(R.layout.activity_main);
-        // set the app version on the nav drawer
-       // View inflatedView = getLayoutInflater().inflate(R.layout.nav_header_main, null);
+        // set app version and type on the nav drawer
+        NavigationView navigationView2 = (NavigationView) findViewById(R.id.nav_view);
+        View header = navigationView2.inflateHeaderView(R.layout.nav_header_main);
+        TextView versionname = (TextView) header.findViewById(R.id.version_number);
+        // View inflatedView = getLayoutInflater().inflate(R.layout.nav_header_main, null);
         String versionName = BuildConfig.VERSION_NAME;
-        TextView versionname = (TextView) findViewById(R.id.app_version_number);
-        versionname.setText("Version: " + versionName);
+        String buildType = BuildConfig.BUILD_TYPE;
+        String wordVersion = getString(R.string.version_format);
+        versionname.setText(wordVersion + " " + versionName + " " + buildType);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -330,12 +330,12 @@ public class MainActivity extends RoboActionBarActivity
                 dialogBuilder.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton) {
 
-                                GMailSender sender = new GMailSender("sss@gmail.com", "sss");
+                                GMailSender sender = new GMailSender("servicenotesapp@gmail.com", "servicenotes11");
                                 try {
                                     sender.sendMail("Service Notes feedback",
                                             message.getText().toString(),
-                                            "sss@gmail.com", //da...
-                                            "ss@gmail.com"); //a ...
+                                            "servicenotesapp@gmail.com", //da...
+                                            "jonny99dj@gmail.com"); //a ...
                                     Snackbar.make(MainActivity.this.findViewById(R.id.fab), getString(R.string.feedbacksent), Snackbar.LENGTH_LONG).setAction("Action", null).show();
 
                                 } catch (Exception e) {
@@ -485,7 +485,7 @@ public class MainActivity extends RoboActionBarActivity
             NotesAdapter.NoteViewWrapper noteViewWrapper = notesData.get(position);
             toRemoveList.add(noteViewWrapper);
             noteDAO.delete(noteViewWrapper.getNote());
-            Snackbar.make(this.findViewById(android.R.id.content), "Nota eliminata con successo", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+            Snackbar.make(this.findViewById(R.id.fab), "Nota eliminata con successo", Snackbar.LENGTH_LONG).setAction("Action", null).show();
 
         }
         // Y luego de la vista (no al mismo tiempo porque pierdo las posiciones que hay que borrar)

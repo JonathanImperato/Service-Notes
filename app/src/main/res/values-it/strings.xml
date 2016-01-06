@@ -114,7 +114,7 @@
     <string name="dialog_licenses_notice_title">Open source licenses</string>
 
     <!-- About dialog -->
-    <string name="version_format">Version %s</string>
+    <string name="version_format">Versione:</string>
     <string name="copyright_info">&#169; Daniel Pedraza-Arcega</string>
     <string name="drawerversion">Service Notes</string>
     <string name="other">Altro...</string>

@@ -31,10 +31,10 @@
     <color name="colorToolBars">#00695c</color>
     <!-- MyAppTheme2-->
     <color name="colorPrimary2">#4a5fd0</color>
-    <color name="colorPrimaryDark2">#303F9F</color>
-    <color name="colorPrimaryMiddle2">#3F51B5</color>
+    <color name="colorPrimaryDark2">#222f7d</color>
+    <color name="colorPrimaryMiddle2">#303F9F</color>
     <color name="colorAccent2">#FF4081</color>
-    <color name="colorToolBars2">#303F9F</color>
+    <color name="colorToolBars2">#222f7d</color>
     <!-- MyAppTheme3-->
     <color name="colorPrimary3">#42A5F5</color>
     <color name="colorPrimaryDark3">#15609b</color>
@@ -49,10 +49,10 @@
     <color name="colorToolBars4">#43A047</color>
     <!-- MyAppTheme5-->
     <color name="colorPrimary5">#795548</color>
-    <color name="colorPrimaryDark5">#5D4037</color>
-    <color name="colorPrimaryMiddle5">#814e3e</color>
+    <color name="colorPrimaryDark5">#452e27</color>
+    <color name="colorPrimaryMiddle5">#5D4037</color>
     <color name="colorAccent5">#FDD835</color>
-    <color name="colorToolBars5">#5D4037</color>
+    <color name="colorToolBars5">#452e27</color>
 
     </resources>
 
