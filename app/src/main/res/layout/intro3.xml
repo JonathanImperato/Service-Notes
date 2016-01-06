@@ -17,7 +17,7 @@
         android:textColor="#ffffff"
         android:paddingRight="32dp"
         android:textSize="28sp"
-        android:text="Editable"
+        android:text="@string/intro3_title"
        />
 
     <RelativeLayout
@@ -55,7 +55,7 @@
         android:paddingLeft="64dp"
         android:paddingRight="64dp"
         android:textSize="16sp"
-        android:text="Edit your notes easily and save them"
+        android:text="@string/intro3_content"
         />
     <TextView
         android:layout_width="fill_parent"

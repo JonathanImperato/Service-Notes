@@ -130,7 +130,7 @@ public class SettingsActivity extends PreferenceActivity {
         helpTranslatingPreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
-               startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://crowdin.com/project/service-notes")));
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://crowdin.com/project/service-notes")));
                 return false;
             }
         });

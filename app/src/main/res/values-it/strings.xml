@@ -27,6 +27,7 @@
     <string name="animations_summary">Attiva o disattiva le animazioni</string>
     <string name="animations_title">Animazioni</string>
     <!-- Languages strings -->
+    <string name="restart_text_language_popup">L\'app ha bisogno di un riavvio per applicare la nuova lingua.</string>
     <string name="language_settings">Lingua</string>
     <string name="language_title">Imposta lingua</string>
     <string name="language_summary">Imposta la lingua dell\'app</string>
@@ -71,6 +72,7 @@
     <string name="gittyreporter_login_skip">"Non ho un account"</string>
     <string name="gittyreporter_login_username">Nome utente:</string>
     <string name="gittyreporter_title">Titolo</string>
+    <string name="title_activity_oauth">OAuthActivity</string>
     <string name="hello_world">Ciao mondo!</string>
     <string name="restart_text_popup">Il riavvio è necessario affinchè le modifiche vengano applicate</string>
     <string name="skip">Prosegui</string>
@@ -124,8 +126,16 @@
     <string name="action_note">Aggiungi Nota</string>
     <string name="Press_to_close">Premi per chiudere</string>
     <string name="database">Database</string>
+    <!-- Intro -->
+    <string name="intro1_title">Service Notes</string>
+    <string name="intro1_content">Salva le tue note in maniera sicura ed ordinata</string>
+    <string name="intro2_title">Note</string>
+    <string name="intro2_content">Trova le tue note ovunque, in qualsiasi momento</string>
+    <string name="intro3_title">Modificabili</string>
+    <string name="intro3_content">Modifica le tue note facilmente e salvale</string>
+    <string name="intro4_title">Molte altre funzioni</string>
+    <string name="intro4_content">Alcune funzioni sono nel menu di fianco e molte altre saranno presto disponibili</string>
 
-    <string name="title_activity_oauth">OAuthActivity</string> <string name="restart_text_language_popup">The app needs to be restarted for the language change to be activated.\n\nWARNING: Custom languages may not be accurate.</string>
 
 
     <string name="title_activity_display_file">DisplayFileActivity</string>

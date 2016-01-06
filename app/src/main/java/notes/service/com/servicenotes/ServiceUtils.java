@@ -66,7 +66,7 @@ public class ServiceUtils {
             if (language.length == 1)
                 locale = new Locale(language[0]);
             else
-                locale = new Locale(language[0], language[1]);
+                locale = new Locale(language[1]);
             Locale.setDefault(locale);
             Configuration config = new Configuration();
             config.locale = locale;

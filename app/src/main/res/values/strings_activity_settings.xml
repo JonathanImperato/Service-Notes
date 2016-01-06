@@ -15,21 +15,6 @@
         <item name="brown" translatable="false">4</item>
     </string-array>
 
-    <string-array name="other">
-        <item name="dark">Teal</item>
-        <item name="violet">Violet</item>
-        <item name="blue">Blue</item>
-        <item name="green">Green</item>
-        <item name="brown">Brown</item>
-    </string-array>
-    <string-array name="other_values">
-        <item name="dark" translatable="false">0</item>
-        <item name="violet" translatable="false">1</item>
-        <item name="blue" translatable="false">2</item>
-        <item name="green" translatable="false">3</item>
-        <item name="brown" translatable="false">4</item>
-    </string-array>
-
     <string-array name="animations">
         <item name="on">On</item>
         <item name="off">Off</item>

@@ -17,7 +17,7 @@
         android:textColor="#ffffff"
         android:paddingRight="32dp"
         android:textSize="28sp"
-        android:text="Notes" />
+        android:text="@string/intro2_title" />
 
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -57,7 +57,7 @@
         android:paddingLeft="64dp"
         android:paddingRight="64dp"
         android:textSize="16sp"
-        android:text="Find notes everywhere, in anytime"
+        android:text="@string/intro2_content"
        />
     <TextView
         android:layout_width="fill_parent"

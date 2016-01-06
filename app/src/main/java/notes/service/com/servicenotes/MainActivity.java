@@ -27,9 +27,13 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
+
 import java.util.ArrayList;
+
 import javax.inject.Inject;
+
 import notes.service.com.servicenotes.data.Note;
 import notes.service.com.servicenotes.data.dao.NoteDAO;
 import notes.service.com.servicenotes.widget.NotesAdapter;
@@ -116,10 +120,18 @@ public class MainActivity extends RoboActionBarActivity
             Intent intent = new Intent(this, MyIntro.class);
             startActivity(intent);
 
-            showDialog(firstpopup);
+            //showDialog(firstpopup);
 
             SharedPreferences.Editor editor = settings.edit();
             editor.putBoolean("firstRun", false);
+            editor.commit();
+
+        }
+        boolean firstdialog = settings.getBoolean("firstDialog", true);
+        if (firstdialog) {  // here run your first-time instructions, for example :
+            showDialog(firstpopup);
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putBoolean("firstdialog", false);
             editor.commit();
         }
         MaterialSearchView searchView = (MaterialSearchView) findViewById(R.id.search_view);
@@ -161,7 +173,6 @@ public class MainActivity extends RoboActionBarActivity
     @Override
     public void onResume() {
         super.onResume();
-        // put your code here... to get sharedpreferences
 
     }
 
@@ -303,6 +314,12 @@ public class MainActivity extends RoboActionBarActivity
                                     public void onClick(DialogInterface dialog, int whichButton) {
                                         Intent i = new Intent(MainActivity.this, SettingsActivity.class);
                                         ServiceUtils.setSavedAnimations(MainActivity.this);
+                                        i.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        i.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+                                        i.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
+                                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                         startActivity(i);
                                     }
                                 }

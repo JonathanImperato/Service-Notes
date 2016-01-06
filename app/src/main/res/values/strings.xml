@@ -31,7 +31,7 @@
     <string name="language_settings">Language</string>
     <string name="language_title">Set language</string>
     <string name="language_summary">Select app\'s language</string>
-    <string name="restart_text_language_popup">The app needs to be restarted for the language change to be activated.\n\nWARNING: Custom languages may not be accurate.</string>
+    <string name="restart_text_language_popup">The app needs to be restarted to activate the new language.</string>
     <string name="help_translating_title">Help translating</string>
     <string name="help_translating_summary">Collaborate to this project and help translating the app</string>
     <!-- Other strings -->
@@ -131,13 +131,20 @@
     <string name="action_note">Add Note</string>
     <string name="Press_to_close">Press to close</string>
     <string name="database">Database</string>
-
+    <!-- Intro -->
+    <string name="intro1_title">Welcome to Service Notes</string>
+    <string name="intro1_content">Save your notes safely and ordered</string>
+    <string name="intro2_title">Notes</string>
+    <string name="intro2_content">Find notes everywhere, in anytime</string>
+    <string name="intro3_title">Editable</string>
+    <string name="intro3_content">Edit your notes easily and save them</string>
+    <string name="intro4_title">More Functions</string>
+    <string name="intro4_content">More functions are in the drawer and more are cooming soon</string>
 
     <string name="hint_note_title">Title</string>
     <string name="hint_note_content">Content</string>
     <string name="title_required">The note must have a title</string>
     <string name="content_required">The note must have a content</string>
-
     <!-- ViewNoteActivity strings -->
     <string name="title_activity_view_note">Note</string>
     <string name="action_edit_note">Edit note</string>

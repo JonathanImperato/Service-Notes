@@ -17,7 +17,7 @@
         android:textColor="#ffffff"
         android:paddingRight="32dp"
         android:textSize="28sp"
-        android:text="More Functions"
+        android:text="@string/intro4_title"
          />
 
     <RelativeLayout
@@ -57,7 +57,7 @@
         android:paddingLeft="64dp"
         android:paddingRight="64dp"
         android:textSize="16sp"
-        android:text="More functions are in the drawer and more are cooming soon"
+        android:text="@string/intro4_content"
         />
     <TextView
         android:layout_width="fill_parent"
