@@ -10,8 +10,8 @@ android {
         applicationId "notes.service.com.servicenotes"
         minSdkVersion 21
         targetSdkVersion 23
-        versionCode 16
-        versionName "1.2.4"
+        versionCode 18
+        versionName "1.2.6"
         multiDexEnabled true
     }
     compileOptions {

@@ -61,11 +61,10 @@ public class MainActivity extends RoboActionBarActivity
     private NotesAdapter listAdapter;
     private ActionMode.Callback actionModeCallback;
     private ActionMode actionMode;
-    public static final int firstpopup = 0;
     public static final int feedback = 1;
     private SheetLayout mSheetLayout;
     private FloatingActionButton fab;
-    private static final int REQUEST_CODE = 1234;
+    private static final int REQUEST_CODE = 4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,13 +128,6 @@ public class MainActivity extends RoboActionBarActivity
             editor.putBoolean("firstRun", false);
             editor.commit();
 
-        }
-        boolean firstdialog = settings.getBoolean("firstDialog", true);
-        if (firstdialog) {  // here run your first-time instructions, for example :
-            showDialog(firstpopup);
-            SharedPreferences.Editor editor = settings.edit();
-            editor.putBoolean("firstdialog", false);
-            editor.commit();
         }
         MaterialSearchView searchView = (MaterialSearchView) findViewById(R.id.search_view);
         searchView.setVoiceSearch(true);
@@ -296,7 +288,7 @@ public class MainActivity extends RoboActionBarActivity
 
             return;
         }
-        if(requestCode == REQUEST_CODE){
+        if (requestCode == REQUEST_CODE) {
             mSheetLayout.contractFab();
         }
         super.onActivityResult(requestCode, resultCode, data);
@@ -306,31 +298,7 @@ public class MainActivity extends RoboActionBarActivity
     @Override
     protected Dialog onCreateDialog(int id) {
         switch (id) {
-            case firstpopup:
-                return new android.support.v7.app.AlertDialog.Builder(this)
-                        .setTitle("Primo avvio!")
-                        .setMessage("Questo è il tuo primo avvio: vuoi configuare le impostazioni?")
-                        .setNegativeButton("Non  ora", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int whichButton) {
-                                        //nothing to show
-                                    }
-                                }
-                        )
-                        .setPositiveButton("Si", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int whichButton) {
-                                        Intent i = new Intent(MainActivity.this, SettingsActivity.class);
-                                        ServiceUtils.setSavedAnimations(MainActivity.this);
-                                        i.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                        i.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
-                                        i.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
-                                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                        startActivity(i);
-                                    }
-                                }
-                        )
-                        .create();
+
             case feedback:
                 AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
                 LayoutInflater inflater = this.getLayoutInflater();
@@ -610,6 +578,7 @@ public class MainActivity extends RoboActionBarActivity
 
     @Override
     public void onFabAnimationEnd() {
+        //New note result code is the same as the request code
         startActivityForResult(EditNoteActivity.buildIntent(MainActivity.this), REQUEST_CODE);
     }
 
