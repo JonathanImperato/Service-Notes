@@ -28,6 +28,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.github.fabtransitionactivity.SheetLayout;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
 import java.util.ArrayList;
@@ -41,7 +42,7 @@ import roboguice.activity.RoboActionBarActivity;
 import roboguice.inject.InjectView;
 
 public class MainActivity extends RoboActionBarActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, SheetLayout.OnFabAnimationEndListener {
     private static final int NEW_NOTE_RESULT_CODE = 4;
     private static final int EDIT_NOTE_RESULT_CODE = 5;
     @InjectView(android.R.id.empty)
@@ -62,6 +63,9 @@ public class MainActivity extends RoboActionBarActivity
     private ActionMode actionMode;
     public static final int firstpopup = 0;
     public static final int feedback = 1;
+    private SheetLayout mSheetLayout;
+    private FloatingActionButton fab;
+    private static final int REQUEST_CODE = 1234;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,19 +90,18 @@ public class MainActivity extends RoboActionBarActivity
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         // Set App version to the nav drawer
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        mSheetLayout = (SheetLayout) findViewById(R.id.bottom_sheet);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Snackbar.make(view, "Nota in salvataggio...", Snackbar.LENGTH_LONG)
-                //      .setAction("Action", null).show();
-
-                // Crear una nota nueva
-
-                startActivityForResult(EditNoteActivity.buildIntent(MainActivity.this), NEW_NOTE_RESULT_CODE);
+                mSheetLayout.expandFab();
             }
 
         });
+        mSheetLayout.setFab(fab);
+        mSheetLayout.setFabAnimationEndListener(this);
+
 
         selectedPositions = new ArrayList<>();
         setupNotesAdapter();
@@ -292,6 +295,9 @@ public class MainActivity extends RoboActionBarActivity
             }
 
             return;
+        }
+        if(requestCode == REQUEST_CODE){
+            mSheetLayout.contractFab();
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
@@ -601,5 +607,10 @@ public class MainActivity extends RoboActionBarActivity
         });
     }
 
+
+    @Override
+    public void onFabAnimationEnd() {
+        startActivityForResult(EditNoteActivity.buildIntent(MainActivity.this), REQUEST_CODE);
+    }
 
 }
