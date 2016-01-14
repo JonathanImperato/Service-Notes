@@ -18,5 +18,6 @@ Used libraries
 [AppIntro](https://github.com/PaoloRotolo/AppIntro)<br>
 [GittyReporter](https://github.com/PaoloRotolo/GittyReporter)<br>
 [MaterialSearchView](https://github.com/MiguelCatalan/MaterialSearchView)<br>
+[FabTransitionActivity](https://github.com/coyarzun89/FabTransitionActivity<br>
 
 
