@@ -97,6 +97,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="bottom"
                 app:ft_container_gravity="center"
+                app:ft_color="?attr/colorAccent"
                 android:elevation="2dp"/>
         </android.support.design.widget.CoordinatorLayout>
 

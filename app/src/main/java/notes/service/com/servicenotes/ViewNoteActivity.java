@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.github.fabtransitionactivity.SheetLayout;
+
 import java.text.DateFormat;
 
 import notes.service.com.servicenotes.data.Note;
@@ -21,7 +23,7 @@ import roboguice.inject.InjectView;
  *
  * @author Daniel Pedraza Arcega
  */
-public class ViewNoteActivity extends RoboActionBarActivity {
+public class ViewNoteActivity extends RoboActionBarActivity implements SheetLayout.OnFabAnimationEndListener {
 
     private static final int EDIT_NOTE_RESULT_CODE = 8;
     private static final String EXTRA_NOTE = "EXTRA_NOTE";
@@ -42,6 +44,9 @@ public class ViewNoteActivity extends RoboActionBarActivity {
     @InjectView(R.id.note_updated_at_date)
     private TextView noteUpdatedAtDateText;
     private Note note;
+    private SheetLayout mSheetLayout;
+    private FloatingActionButton fab;
+    private static final int REQUEST_CODE = 8;
 
     /**
      * Construye el Intent para llamar a esta actividad.
@@ -95,18 +100,23 @@ public class ViewNoteActivity extends RoboActionBarActivity {
         });
 
        */
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        mSheetLayout = (SheetLayout) findViewById(R.id.bottom_sheet);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+        //FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivityForResult(EditNoteActivity.buildIntent(ViewNoteActivity.this, note), EDIT_NOTE_RESULT_CODE);
+
+                mSheetLayout.expandFab();
             }
 
         });
+        mSheetLayout.setFab(fab);
+        mSheetLayout.setFabAnimationEndListener(this);
         note = (Note) getIntent().getSerializableExtra(EXTRA_NOTE); // Recuperar la nota del Intent
         // Mostrar la información de la nota en el layout
         noteTitleText.setText(note.getTitle());
-       // noteBookText.setText(note.getBook());
+        // noteBookText.setText(note.getBook());
         noteContentText.setText(note.getContent());
         noteCreatedAtDateText.setText(DATETIME_FORMAT.format(note.getCreatedAt()));
         noteUpdatedAtDateText.setText(DATETIME_FORMAT.format(note.getUpdatedAt()));
@@ -145,6 +155,9 @@ public class ViewNoteActivity extends RoboActionBarActivity {
             onBackPressed();
         }
 
+        if (requestCode == REQUEST_CODE) {
+            mSheetLayout.contractFab();
+        }
         super.onActivityResult(requestCode, resultCode, data);
     }
 
@@ -158,5 +171,13 @@ public class ViewNoteActivity extends RoboActionBarActivity {
         finish();
         ServiceUtils.setSavedAnimations(this);
 
+    }
+
+
+    @Override
+    public void onFabAnimationEnd() {
+        //same as +  EDIT_NOTE_RESULT_CODE so it also save the note
+        //startActivityForResult(EditNoteActivity.buildIntent(ViewNoteActivity.this, note), EDIT_NOTE_RESULT_CODE);
+        startActivityForResult(EditNoteActivity.buildIntent(ViewNoteActivity.this, note), REQUEST_CODE);
     }
 }

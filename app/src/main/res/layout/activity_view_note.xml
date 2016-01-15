@@ -1,39 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-    <android.support.design.widget.CoordinatorLayout android:layout_width="match_parent"
-        android:layout_height="match_parent" android:fitsSystemWindows="true">
-    <android.support.design.widget.AppBarLayout android:layout_height="wrap_content"
-        android:layout_width="match_parent" android:theme="@style/AppTheme.AppBarOverlay"
-        android:id="@+id/textView16">
+    android:layout_height="match_parent">
 
-        <android.support.v7.widget.Toolbar android:id="@+id/toolbar2"
-            android:layout_width="match_parent" android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary" app:popupTheme="@style/AppTheme.PopupOverlay" />
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
 
-    </android.support.design.widget.AppBarLayout></android.support.design.widget.CoordinatorLayout>
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/textView16"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar2"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        </android.support.design.widget.AppBarLayout>
+    </android.support.design.widget.CoordinatorLayout>
 
 
-    <android.support.design.widget.FloatingActionButton android:id="@+id/fab"
-        android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:src="@drawable/ic_edit"
-        app:backgroundTint="?attr/colorAccent"
-        android:layout_marginLeft="@dimen/fab_margin"
-        android:layout_marginRight="@dimen/fab_margin"
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp" />
+        android:layout_marginLeft="@dimen/fab_margin"
+        android:layout_marginRight="@dimen/fab_margin"
+        android:src="@drawable/ic_edit"
+        app:backgroundTint="?attr/colorAccent" />
+    <com.github.fabtransitionactivity.SheetLayout
+        android:id="@+id/bottom_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom"
+        app:ft_container_gravity="center"
+        app:ft_color="?attr/colorAccent"
+        android:elevation="2dp"/>
 
     <TableLayout
+        android:id="@+id/tableLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/fab"
-        android:layout_alignParentStart="true"
-        android:id="@+id/tableLayout">
+        android:layout_alignParentStart="true">
 
         <TableRow
             android:layout_width="wrap_content"
@@ -42,20 +62,20 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:textStyle="italic"
-                android:textColor="#ff000000"
                 android:layout_marginLeft="8dp"
-                android:text="@string/label_created_at" />
+                android:text="@string/label_created_at"
+                android:textColor="#ff000000"
+                android:textSize="12sp"
+                android:textStyle="italic" />
 
             <TextView
                 android:id="@+id/note_created_at_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="12sp"
                 android:layout_marginLeft="8dp"
-                android:textStyle="italic"
-                android:textColor="#ff000000" />
+                android:textColor="#ff000000"
+                android:textSize="12sp"
+                android:textStyle="italic" />
         </TableRow>
 
         <TableRow
@@ -65,31 +85,31 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:textStyle="italic"
-                android:textColor="#ff000000"
                 android:layout_marginLeft="8dp"
-                android:text="@string/label_updated_at" />
+                android:text="@string/label_updated_at"
+                android:textColor="#ff000000"
+                android:textSize="12sp"
+                android:textStyle="italic" />
 
             <TextView
                 android:id="@+id/note_updated_at_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="12sp"
                 android:layout_marginLeft="8dp"
-                android:textStyle="italic"
-                android:textColor="#ff000000" />
+                android:textColor="#ff000000"
+                android:textSize="12sp"
+                android:textStyle="italic" />
         </TableRow>
     </TableLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="80dp"
-        android:layout_alignParentTop="true"
+        android:layout_above="@+id/fab"
         android:layout_alignParentStart="true"
-        android:layout_above="@+id/fab">
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="80dp"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/note_title"
@@ -97,25 +117,27 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="12dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="#ff000000"
-            android:textStyle="bold"
-            android:layout_marginTop="12dp"
-            android:layout_marginLeft="10dp" />
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/scroll_view"
-    android:layout_below="@+id/note_title">
-        <TextView
-            android:id="@+id/note_content"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/note_title"
-            android:layout_marginBottom="6dp"
-            android:textColor="#ff000000"
-            android:layout_margin="8dp" />
-    </ScrollView>
+            android:textStyle="bold" />
+
+        <ScrollView
+            android:id="@+id/scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/note_title">
+
+            <TextView
+                android:id="@+id/note_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/note_title"
+                android:layout_margin="8dp"
+                android:layout_marginBottom="6dp"
+                android:textColor="#ff000000" />
+        </ScrollView>
     </RelativeLayout>
 
 </RelativeLayout>
