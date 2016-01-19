@@ -15,6 +15,7 @@ Translations
 Collaborators
 -----------
 [Mark Lordan](https://github.com/DarkNormal) Code improvement
+
 [Adrien Zier](https://plus.google.com/u/0/+AdrienZier) App Icon
 
 Used libraries
