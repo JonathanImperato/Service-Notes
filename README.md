@@ -12,6 +12,12 @@ Translations
 -----------
 [![Crowdin](https://d322cqt584bo4o.cloudfront.net/service-notes/localized.svg)](https://crowdin.com/project/service-notes)
 
+Collaborators
+-----------
+[Mark Lordan](https://github.com/DarkNormal) Code improvement
+
+[Adrien Zier](https://plus.google.com/u/0/+AdrienZier) App Icon
+
 Used libraries
 -----------
 [AboutLibraries](https://github.com/mikepenz/AboutLibraries)<br>
