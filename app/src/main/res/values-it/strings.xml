@@ -3,7 +3,7 @@
     <string name="firstpopup">Questo contenuto non è ancora disponibile</string>
     <!-- Other strings -->
     <string name="other_settings">Altro</string>
-    <string name="other_info">Info</string>
+    <string name="other_info">Sito Web</string>
     <string name="other_library">Librierie</string>
     <!-- Themes strings -->
     <string name="theme_myapptheme">Verde</string>
@@ -59,6 +59,7 @@
     <string name="customization_settings">Personalizza</string>
     <string name="decline">Annulla</string>
     <string name="share">Condividi </string>
+    <string name="rate">Valuta</string>
     <string name="done_button">Fatto</string>
     <string name="gcm_defaultSenderId">482450084677</string>
     <string name="gittyreporter_action_settings">Impostazioni</string>
@@ -105,6 +106,7 @@
     <string name="cancel">Annulla</string>
     <string name="feedbacknotsent">Feedback non inviato, ci dispiace</string>
     <string name="feedbacksent">Feedback inviato con successo</string>
+    <string name="feedbackempty">Il campo feedback non può essere vuoto.</string>
     <string name="feedbackmsg">Inserisci il tuo feedback</string>
     <string name="no_notes">Nessuna Nota</string>
     <string name="action_delete">Elimina</string>
@@ -117,8 +119,9 @@
 
     <!-- About dialog -->
     <string name="version_format">Versione:</string>
-    <string name="copyright_info">&#169; Daniel Pedraza-Arcega</string>
+    <string name="copyright_info">Jonathan Imperato, Italia</string>
     <string name="drawerversion">Service Notes</string>
+    <string name="source">Codice Sorgente</string>
     <string name="other">Altro...</string>
     <!-- EditNoteActivity strings -->
     <string name="title_activity_edit_note">Modifica nota</string>

@@ -1,47 +1,51 @@
 package notes.service.com.servicenotes;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.net.Uri;
-import android.os.Bundle;
-import android.os.StrictMode;
-import android.speech.RecognizerIntent;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.view.ActionMode;
-import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.TextView;
+/**
+ * Created by Imperato on 15/01/2016.
+ */
 
-import com.github.fabtransitionactivity.SheetLayout;
-import com.miguelcatalan.materialsearchview.MaterialSearchView;
+        import android.app.AlertDialog;
+        import android.app.Dialog;
+        import android.content.DialogInterface;
+        import android.content.Intent;
+        import android.content.SharedPreferences;
+        import android.net.Uri;
+        import android.os.Bundle;
+        import android.os.StrictMode;
+        import android.speech.RecognizerIntent;
+        import android.support.design.widget.FloatingActionButton;
+        import android.support.design.widget.NavigationView;
+        import android.support.design.widget.Snackbar;
+        import android.support.v4.view.GravityCompat;
+        import android.support.v4.widget.DrawerLayout;
+        import android.support.v7.app.ActionBarDrawerToggle;
+        import android.support.v7.view.ActionMode;
+        import android.support.v7.widget.Toolbar;
+        import android.text.TextUtils;
+        import android.util.Log;
+        import android.view.LayoutInflater;
+        import android.view.Menu;
+        import android.view.MenuItem;
+        import android.view.View;
+        import android.widget.AdapterView;
+        import android.widget.EditText;
+        import android.widget.ListView;
+        import android.widget.TextView;
 
-import java.util.ArrayList;
+        import com.github.fabtransitionactivity.SheetLayout;
+        import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
-import javax.inject.Inject;
+        import java.util.ArrayList;
 
-import notes.service.com.servicenotes.data.Note;
-import notes.service.com.servicenotes.data.dao.NoteDAO;
-import notes.service.com.servicenotes.widget.NotesAdapter;
-import roboguice.activity.RoboActionBarActivity;
-import roboguice.inject.InjectView;
+        import javax.inject.Inject;
 
-public class MainActivity extends RoboActionBarActivity
+        import notes.service.com.servicenotes.data.Note;
+        import notes.service.com.servicenotes.data.dao.NoteDAO;
+        import notes.service.com.servicenotes.widget.NotesAdapter;
+        import roboguice.activity.RoboActionBarActivity;
+        import roboguice.inject.InjectView;
+
+public class main_backup extends RoboActionBarActivity
         implements NavigationView.OnNavigationItemSelectedListener, SheetLayout.OnFabAnimationEndListener {
     private static final int NEW_NOTE_RESULT_CODE = 4;
     private static final int EDIT_NOTE_RESULT_CODE = 5;
@@ -53,6 +57,8 @@ public class MainActivity extends RoboActionBarActivity
     private FloatingActionButton addNoteButton;
     @Inject
     private NoteDAO noteDAO;
+
+
     public static final String TAG = "MainActivity";
     private ArrayList<Integer> selectedPositions;
     private ArrayList<NotesAdapter.NoteViewWrapper> notesData;
@@ -77,8 +83,9 @@ public class MainActivity extends RoboActionBarActivity
         TextView versionname = (TextView) header.findViewById(R.id.version_number);
         // View inflatedView = getLayoutInflater().inflate(R.layout.nav_header_main, null);
         String versionName = BuildConfig.VERSION_NAME;
+        String buildType = BuildConfig.BUILD_TYPE;
         String wordVersion = getString(R.string.version_format);
-        versionname.setText(wordVersion + " " + versionName);
+        versionname.setText(wordVersion + " " + versionName + " " + buildType);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -97,6 +104,8 @@ public class MainActivity extends RoboActionBarActivity
         });
         mSheetLayout.setFab(fab);
         mSheetLayout.setFabAnimationEndListener(this);
+
+
         selectedPositions = new ArrayList<>();
         setupNotesAdapter();
         setupActionModeCallback();
@@ -116,15 +125,18 @@ public class MainActivity extends RoboActionBarActivity
         if (firstRun) {  // here run your first-time instructions, for example :
             Intent intent = new Intent(this, MyIntro.class);
             startActivity(intent);
+
+            //showDialog(firstpopup);
+
             SharedPreferences.Editor editor = settings.edit();
             editor.putBoolean("firstRun", false);
             editor.commit();
 
         }
-        //MaterialSearchView searchView = (MaterialSearchView) findViewById(R.id.search_view);
-        //searchView.setVoiceSearch(true);
+        MaterialSearchView searchView = (MaterialSearchView) findViewById(R.id.search_view);
+        searchView.setVoiceSearch(true);
         //searchView.setSuggestions(getResources().getStringArray(R.array.query_suggestions));
-        /*searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
+        searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 return false;
@@ -132,7 +144,14 @@ public class MainActivity extends RoboActionBarActivity
 
             @Override
             public boolean onQueryTextChange(String newText) {
-
+                //Do some magic
+            /*    if (TextUtils.isEmpty(newText.toString())) {
+                    ListView.clearTextFilter();
+                } else {
+                    ListView.setFilterText(newText);
+                }
+                return true;
+                */
                 return false;
             }
         });
@@ -147,7 +166,7 @@ public class MainActivity extends RoboActionBarActivity
             public void onSearchViewClosed() {
                 //Do some magic
             }
-        });*/
+        });
     }
 
     @Override
@@ -221,12 +240,12 @@ public class MainActivity extends RoboActionBarActivity
             startActivity(intent);
             return true;
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-            Intent intent = new Intent(this, Info.class);
+        }/* else if (id == R.id.nav_gallery) {
+            Intent intent = new Intent(this, NotesBackupActivity.class);
             startActivity(intent);
             return true;
 
-        }/* else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_slideshow) {
             Intent intent = new Intent(this, DisplayFileActivity.class);
             startActivity(intent);
             return true;
@@ -273,7 +292,6 @@ public class MainActivity extends RoboActionBarActivity
 
             return;
         }
-
         if (requestCode == REQUEST_CODE) {
             mSheetLayout.contractFab();
         }
@@ -290,6 +308,7 @@ public class MainActivity extends RoboActionBarActivity
                 LayoutInflater inflater = this.getLayoutInflater();
                 final View dialogView = inflater.inflate(R.layout.dialoginputmessage, null);
                 dialogBuilder.setView(dialogView);
+
                 final EditText message = (EditText) dialogView.findViewById(R.id.name);
 
                 dialogBuilder.setTitle("Feedback");
@@ -305,21 +324,18 @@ public class MainActivity extends RoboActionBarActivity
                 );
                 dialogBuilder.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton) {
-                                if (findViewById(R.id.name) != null) {
-                                    GMailSender sender = new GMailSender("servicenotesapp@gmail.com", "servicenotes11");
-                                    try {
-                                        sender.sendMail("Service Notes feedback",
-                                                message.getText().toString(),
-                                                "servicenotesapp@gmail.com", //da...
-                                                "jonny99dj@gmail.com"); //a ...
-                                        Snackbar.make(MainActivity.this.findViewById(R.id.fab), getString(R.string.feedbacksent), Snackbar.LENGTH_LONG).setAction("Action", null).show();
 
-                                    } catch (Exception e) {
-                                        Log.e("SendMail failed", e.getMessage(), e);
-                                        Snackbar.make(MainActivity.this.findViewById(R.id.fab), getString(R.string.feedbacknotsent), Snackbar.LENGTH_LONG).setAction("Action", null).show();
-                                    }
-                                } else {
-                                    Snackbar.make(MainActivity.this.findViewById(R.id.fab), getString(R.string.feedbackempty), Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                                GMailSender sender = new GMailSender("servicenotesapp@gmail.com", "servicenotes11");
+                                try {
+                                    sender.sendMail("Service Notes feedback",
+                                            message.getText().toString(),
+                                            "servicenotesapp@gmail.com", //da...
+                                            "jonny99dj@gmail.com"); //a ...
+                                    Snackbar.make(main_backup.this.findViewById(R.id.fab), getString(R.string.feedbacksent), Snackbar.LENGTH_LONG).setAction("Action", null).show();
+
+                                } catch (Exception e) {
+                                    Log.e("SendMail failed", e.getMessage(), e);
+                                    Snackbar.make(main_backup.this.findViewById(R.id.fab), getString(R.string.feedbacknotsent), Snackbar.LENGTH_LONG).setAction("Action", null).show();
                                 }
                             }
                         }
@@ -383,7 +399,7 @@ public class MainActivity extends RoboActionBarActivity
                     // borrar notas solo si hay notas a borrar; sino se acaba el modo contextual.
                     case R.id.action_delete:
                         if (!selectedPositions.isEmpty()) {
-                            new AlertDialog.Builder(MainActivity.this)
+                            new AlertDialog.Builder(main_backup.this)
                                     .setMessage(getString(R.string.delete_notes_alert, selectedPositions.size()))
                                     .setNegativeButton(android.R.string.no, null)
                                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
@@ -429,7 +445,6 @@ public class MainActivity extends RoboActionBarActivity
      * Actualiza la vista de esta actividad cuando hay notas o no hay notas.
      */
     private void updateView() {
-        //ImageView imgView = (ImageView) findViewById(R.id.emptyimg);
         if (notesData.isEmpty()) { // Mostrar mensaje
             listView.setVisibility(View.GONE);
             emptyListTextView.setVisibility(View.VISIBLE);
@@ -516,7 +531,7 @@ public class MainActivity extends RoboActionBarActivity
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // Ver la nota al hacer click
-                startActivityForResult(ViewNoteActivity.buildIntent(MainActivity.this, notesData.get(position).getNote()), EDIT_NOTE_RESULT_CODE);
+                startActivityForResult(ViewNoteActivity.buildIntent(main_backup.this, notesData.get(position).getNote()), EDIT_NOTE_RESULT_CODE);
             }
         });
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -567,8 +582,8 @@ public class MainActivity extends RoboActionBarActivity
 
     @Override
     public void onFabAnimationEnd() {
-        //same as +  NEW_NOTE_RESULT_CODE so it also save the note
-        startActivityForResult(EditNoteActivity.buildIntent(MainActivity.this), REQUEST_CODE);
+        //New note result code is the same as the request code
+        startActivityForResult(EditNoteActivity.buildIntent(main_backup.this), REQUEST_CODE);
     }
 
 }

@@ -112,19 +112,23 @@ public class NotesAdapter extends BaseAdapter implements Filterable {
             convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.notes_row, parent, false);
             holder = new ViewHolder(convertView);
             convertView.setTag(holder);
+
         } else holder = (ViewHolder) convertView.getTag(); // ya existe, solo es reciclarlo
         // Inicializa la vista con los datos de la nota
         NoteViewWrapper noteViewWrapper = data.get(position);
         holder.noteIdText.setText(String.valueOf(noteViewWrapper.note.getId()));
         holder.noteTitleText.setText(noteViewWrapper.note.getTitle());
-        // Corta la cadena a 80 caracteres y le agrega "..."
+        // se la nota è più di 80 caratteri"..."
         holder.noteContentText.setText(noteViewWrapper.note.getContent().length() >= 80 ? noteViewWrapper.note.getContent().substring(0, 80).concat("...") : noteViewWrapper.note.getContent());
         holder.noteDateText.setText(DATETIME_FORMAT.format(noteViewWrapper.note.getUpdatedAt()));
-        // Cambia el color del fondo si es seleccionado
-        if (noteViewWrapper.isSelected)
+        // Cambia il colore se la nota è cliccata
+        if (noteViewWrapper.isSelected) {
             holder.parent.setBackgroundColor(parent.getContext().getResources().getColor(R.color.selected_note));
-            // Sino lo regresa a transparente
-        else
+            //LinearLayout.LayoutParams imageLayoutParams = new LinearLayout.LayoutParams(
+            //   LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+            // sfondo bianco quando nota non selezionata
+
+        } else
             holder.parent.setBackgroundColor(parent.getContext().getResources().getColor(android.R.color.transparent));
         return convertView;
     }

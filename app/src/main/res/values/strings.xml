@@ -2,9 +2,10 @@
     <string name="app_name">Service Notes</string>
     <string name="firstpopup">Locked Content, not yet available</string>
     <string name="share">Share</string>
+    <string name="rate">Rate</string>
     <!-- Other strings -->
     <string name="other_settings">Other</string>
-    <string name="other_info">Info</string>
+    <string name="other_info">Website</string>
     <string name="other_library">Libraries</string>
     <!-- Themes strings -->
     <string name="theme_myapptheme">Green</string>
@@ -104,6 +105,7 @@
     <string name="feedbacknotsent">Feedback not sent, sorry</string>
     <string name="feedbacksent">Feedback sent succesfully</string>
     <string name="feedbackmsg">Enter your feedback</string>
+    <string name="feedbackempty">Feedback can not be empty, sorry</string>
     <string name="title_activity_notes_list">Note</string>
     <string name="no_notes">No Notes</string>
     <string name="action_delete">Delete</string>
@@ -122,7 +124,8 @@
     <string name="title_activity_read_file">ReadFile</string>
     <!-- About dialog -->
     <string name="version_format">Version:</string>
-    <string name="copyright_info">&#169; Daniel Pedraza-Arcega</string>
+    <string name="copyright_info">Jonathan Imperato, Italy</string>
+    <string name="source">Source Code</string>
     <string name="drawerversion">Service Notes</string>
     <string name="other">Other</string>
     <!-- EditNoteActivity strings -->

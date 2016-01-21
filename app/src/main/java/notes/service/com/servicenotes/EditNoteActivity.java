@@ -5,12 +5,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import java.util.Date;
 
@@ -31,7 +31,7 @@ public class EditNoteActivity extends RoboActionBarActivity {
     public static Activity activity;
     @InjectView(R.id.note_title)
     private EditText noteTitleText;
-   // @InjectView(R.id.note_book)
+    // @InjectView(R.id.note_book)
     //private EditText noteBookText;
     @InjectView(R.id.note_content)
     private EditText noteContentText;
@@ -102,7 +102,7 @@ public class EditNoteActivity extends RoboActionBarActivity {
         note = (Note) getIntent().getSerializableExtra(EXTRA_NOTE); // Recuperar la nota del Intent
         if (note != null) { // Editar nota existente
             noteTitleText.setText(note.getTitle());
-         //   noteBookText.setText(note.getBook());
+            //   noteBookText.setText(note.getBook());
             noteContentText.setText(note.getContent());
         } else { // Nueva nota
             note = new Note();
@@ -121,6 +121,7 @@ public class EditNoteActivity extends RoboActionBarActivity {
 
         });
     }
+
     /**
      * {@inheritDoc}
      */
@@ -179,20 +180,19 @@ public class EditNoteActivity extends RoboActionBarActivity {
      * Muestra mensajes de validación de la forma de la nota.
      */
     private void validateNoteForm() {
-        StringBuilder message = null;
+        TextInputLayout til = (TextInputLayout) findViewById(R.id.text_input_layout);
+        TextInputLayout til2 = (TextInputLayout) findViewById(R.id.text_input_layout2);
+
         if (Strings.isNullOrBlank(noteTitleText.getText().toString())) {
-            message = new StringBuilder().append(getString(R.string.title_required));
+            //message = new StringBuilder().append(getString(R.string.title_required));
+            til.setErrorEnabled(true);
+            til.setError(getString(R.string.title_required));
+            til.setErrorEnabled(false);
         }
         if (Strings.isNullOrBlank(noteContentText.getText().toString())) {
-            if (message == null)
-                message = new StringBuilder().append(getString(R.string.content_required));
-            else message.append("\n").append(getString(R.string.content_required));
-        }
-        if (message != null) {
-            Toast.makeText(getApplicationContext(),
-                    message,
-                    Toast.LENGTH_LONG)
-                    .show();
+            til2.setErrorEnabled(true);
+            til2.setError(getString(R.string.content_required));
+            til2.setErrorEnabled(false);
         }
     }
 
@@ -202,7 +202,11 @@ public class EditNoteActivity extends RoboActionBarActivity {
     @Override
     public void onBackPressed() {
         // No se edito ningúna nota ni creo alguna nota
-        setResult(RESULT_CANCELED, new Intent());
+        setResult(RESULT_CANCELED);
+        Intent i = new Intent(EditNoteActivity.this, MainActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         ServiceUtils.setSavedAnimations(this);
         finish();
     }

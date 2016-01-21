@@ -18,7 +18,7 @@
         android:layout_height="92dp"
         android:layout_weight="0.67"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:src="@mipmap/ic_launcher" />
+        android:src="@mipmap/ic_launcher_app" />
 
 
     <TextView

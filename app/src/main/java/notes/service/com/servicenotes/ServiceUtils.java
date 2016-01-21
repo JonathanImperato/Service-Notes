@@ -60,13 +60,12 @@ public class ServiceUtils {
     public static void setSavedLanguage(Context context) {
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
         String[] language = sharedPrefs.getString("selected_language", "not_changed").split("-r");
-
         if (!language[0].equals("default") && !language[0].equals("not_changed")) {
             Locale locale;
             if (language.length == 1)
                 locale = new Locale(language[0]);
             else
-                locale = new Locale(language[1]);
+                locale = new Locale(language[0], language[1]);
             Locale.setDefault(locale);
             Configuration config = new Configuration();
             config.locale = locale;
@@ -94,7 +93,7 @@ public class ServiceUtils {
                     ((Activity) context).overridePendingTransition(R.anim.fadein, R.anim.fadeout);
                     break;
                 case 1:
-                    ((Activity) context).overridePendingTransition(0, 1);
+                    //((Activity) context).overridePendingTransition(0, 1);
                     break;
                 default:
                     ((Activity) context).overridePendingTransition(R.anim.fadein, R.anim.fadeout);

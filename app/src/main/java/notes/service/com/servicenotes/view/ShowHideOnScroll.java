@@ -1,9 +1,8 @@
 package notes.service.com.servicenotes.view;
 
+public class ShowHideOnScroll /*extends ScrollDetector implements Animation.AnimationListener  {
 
-public class ShowHideOnScroll /*extends ScrollDetector implements Animation.AnimationListener */ {
-
-   /* private final FloatingActionButton fab;
+    private final FloatingActionButton fab;
     private final ActionBar actionBar;
 
     public ShowHideOnScroll(FloatingActionButton fab, ActionBar actionBar) {
@@ -56,5 +55,5 @@ public class ShowHideOnScroll /*extends ScrollDetector implements Animation.Anim
         // Nada
     }
 
-    */
-}
+
+}*/{}

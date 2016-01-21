@@ -32,7 +32,7 @@ public class AppIntro extends AppIntro2 {
         // Turn vibration on and set intensity
         // NOTE: you will probably need to ask VIBRATE permesssion in Manifest
         setVibrate(true);
-        setVibrateIntensity(100);
+        setVibrateIntensity(30);
     }
 
     @Override
