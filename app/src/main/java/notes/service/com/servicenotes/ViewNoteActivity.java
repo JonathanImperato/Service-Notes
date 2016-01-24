@@ -7,6 +7,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -77,9 +78,10 @@ public class ViewNoteActivity extends RoboActionBarActivity implements SheetLayo
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         ServiceUtils.setSavedAnimations(this);
-        super.onCreate(savedInstanceState);
         ServiceUtils.setSavedLanguage(this);
-        ServiceUtils.setSavedTheme(this);
+        Window window = getWindow();
+        ServiceUtils.setSavedTheme(this, window);
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_note);
         // Inicializa los componentes //////////////////////////////////////////////////////////////
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar2);
@@ -89,6 +91,8 @@ public class ViewNoteActivity extends RoboActionBarActivity implements SheetLayo
             getSupportActionBar().setDisplayShowTitleEnabled(true);
             setSupportActionBar(toolbar);
         }
+        //Get status bar color from the utils activity and set it
+
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true); // Muestra la flecha hacia atrás
         //scrollView.setOnTouchListener(new ShowHideOnScroll(editNoteButton, getSupportActionBar())); // Esconde o muesta el FAB y la Action Bar
      /*   editNoteButton.setOnClickListener(new View.OnClickListener() {

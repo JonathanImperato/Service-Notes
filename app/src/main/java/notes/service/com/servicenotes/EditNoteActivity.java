@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.EditText;
 
 import java.util.Date;
@@ -80,9 +81,10 @@ public class EditNoteActivity extends RoboActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         ServiceUtils.setSavedAnimations(this);
-        super.onCreate(savedInstanceState);
-        ServiceUtils.setSavedTheme(this);
+        Window window = getWindow();
+        ServiceUtils.setSavedTheme(this, window);
         ServiceUtils.setSavedLanguage(this);
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_note);
         //  ActionBar actionBar = getSupportActionBar();
         // Inicializa los componentes //////////////////////////////////////////////////////////////

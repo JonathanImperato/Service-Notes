@@ -11,9 +11,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -51,14 +53,16 @@ public class DonateActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         ServiceUtils.setSavedAnimations(this);
-        super.onCreate(savedInstanceState);
         ServiceUtils.setSavedLanguage(this);
-        ServiceUtils.setSavedTheme(this);
+        Window window = getWindow();
+        ServiceUtils.setSavedTheme(this, window);
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donate);
         activity = this;
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar); // Setting toolbar with setSupportActionBar()
-        toolbar.setTitle(R.string.action_donate);
+        toolbar.setTitle(R.string.action_donate2);
+        //Get status bar color from the utils activity and set it
         toolbar.setNavigationIcon(R.drawable.ic_navigation_arrow_back);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,6 +99,7 @@ public class DonateActivity extends Activity {
                 ArrayList skuList = new ArrayList();
                 skuList.add(inappid);
                 Bundle querySkus = new Bundle();
+
                 querySkus.putStringArrayList("ITEM_ID_LIST", skuList);
                 Bundle skuDetails;
                 try {
@@ -103,7 +108,6 @@ public class DonateActivity extends Activity {
 
                     int response = skuDetails.getInt("RESPONSE_CODE");
                     if (response == 0) {
-
                         ArrayList<String> responseList = skuDetails
                                 .getStringArrayList("DETAILS_LIST");
 
@@ -243,6 +247,7 @@ public class DonateActivity extends Activity {
 
             }
         });
+
         Button purchaseBtn5 = (Button) findViewById(R.id.addBtn5);
         purchaseBtn5.setOnClickListener(new OnClickListener() {
 
@@ -279,8 +284,14 @@ public class DonateActivity extends Activity {
                                         pendingIntent.getIntentSender(), 1001,
                                         new Intent(), Integer.valueOf(0),
                                         Integer.valueOf(0), Integer.valueOf(0));
+
                             }
                         }
+                    } else {
+                        Toast.makeText(
+                                DonateActivity.this,
+                                "ASD!",
+                                Toast.LENGTH_LONG).show();
                     }
                 } catch (RemoteException e) {
                     // TODO Auto-generated catch block
@@ -316,17 +327,26 @@ public class DonateActivity extends Activity {
             if (resultCode == RESULT_OK) {
                 try {
                     JSONObject jo = new JSONObject(purchaseData);
-                    String sku = jo.getString(inappid2);
-                    Toast.makeText(
-                            DonateActivity.this,
-                            "You have bought the " + sku
-                                    + ". Excellent choice!",
-                            Toast.LENGTH_LONG).show();
+
+                    Snackbar.make(findViewById(android.R.id.content),
+                            "Thank you for your support!",
+                            Snackbar.LENGTH_LONG).setAction("Action", null).
+                            show();
 
                 } catch (JSONException e) {
                     System.out.println("Failed to parse purchase data.");
                     e.printStackTrace();
                 }
+            } else {
+                Snackbar.make(findViewById(android.R.id.content),
+                        "You can not perform this action right now",
+                        Snackbar.LENGTH_LONG).setAction("Action", null).
+                        show();
+
+               /* Toast.makeText(
+                        DonateActivity.this,
+                        "You can not perform this action right now",
+                        Toast.LENGTH_LONG).show();*/
             }
         }
     }

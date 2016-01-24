@@ -10,6 +10,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.Window;
 import android.widget.Toast;
 
 import java.io.File;
@@ -31,10 +32,12 @@ public class Backup extends AppCompatActivity implements View.OnClickListener {
         ServiceUtils.setSavedAnimations(this);
         super.onCreate(savedInstanceState);
         ServiceUtils.setSavedLanguage(this);
-        ServiceUtils.setSavedTheme(this);
+        Window window = getWindow();
+        ServiceUtils.setSavedTheme(this, window);
         setContentView(R.layout.activity_backup);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         toolbar.setTitle(R.string.action_settings);
         toolbar.setNavigationIcon(R.drawable.ic_navigation_arrow_back);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {

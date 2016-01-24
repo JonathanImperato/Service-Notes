@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.Window;
 
 import com.mikepenz.aboutlibraries.Libs;
 import com.mikepenz.aboutlibraries.LibsBuilder;
@@ -24,12 +25,14 @@ public class LibrariesActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         ServiceUtils.setSavedAnimations(this);
-        super.onCreate(savedInstanceState);
         ServiceUtils.setSavedLanguage(this);
-        ServiceUtils.setSavedTheme(this);
+        Window window = getWindow();
+        ServiceUtils.setSavedTheme(this, window);
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_libraries);
 
         // Set up the action bar.
+        //Get status bar color from the utils activity and set it
         Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar_libraries); // Attaching the layout to the toolbar object
         toolbar.setNavigationIcon(R.drawable.ic_navigation_arrow_back);
         toolbar.setTitle(R.string.used_libraries_title);

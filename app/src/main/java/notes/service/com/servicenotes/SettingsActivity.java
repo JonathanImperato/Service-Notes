@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 
 import com.google.android.gms.analytics.Tracker;
 
@@ -42,10 +43,12 @@ public class SettingsActivity extends PreferenceActivity {
     public void onCreate(Bundle savedInstanceState) {
         ServiceUtils.setSavedAnimations(this);
         super.onCreate(savedInstanceState);
-        ServiceUtils.setSavedTheme(this);
+        Window window = getWindow();
+        ServiceUtils.setSavedTheme(this, window);
         ServiceUtils.setSavedLanguage(this);
         // ServiceUtils.onActivityCreateSetTheme(this);
         setContentView(R.layout.activity_settings);
+
         Log.i(TAG, "Activity started (onCreate)");
         addPreferencesFromResource(R.xml.fragmented_preferences);
         //ServiceUtils.setSavedLanguage(this);
@@ -73,7 +76,6 @@ public class SettingsActivity extends PreferenceActivity {
         Preference themePreference = findPreference("selected_theme");
         themePreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             public boolean onPreferenceChange(Preference preference, Object newValue) {
-                //ServiceUtils.changeToTheme(SettingsActivity.this, ServiceUtils.VERDE);
                 Intent i = new Intent(SettingsActivity.this, SettingsActivity.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -122,7 +124,7 @@ public class SettingsActivity extends PreferenceActivity {
         info.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://heromine.github.io/")));
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://heromine.github.io/Service-Notes/")));
                 return false;
             }
         });

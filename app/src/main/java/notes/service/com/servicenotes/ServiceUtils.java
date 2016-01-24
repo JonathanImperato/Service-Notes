@@ -4,11 +4,14 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.os.Build;
 import android.preference.PreferenceManager;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.view.Window;
+import android.view.WindowManager;
 
 import java.util.Locale;
-
 public class ServiceUtils {
     private static int cTheme;
 
@@ -23,27 +26,37 @@ public class ServiceUtils {
     public final static int VERDE = 3;
 
     public final static int MARRONE = 4;
+    public static int color;
 
-    public static void setSavedTheme(Context context) {
+    public static void setSavedTheme(Context context, Window window) {
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
         String theme = sharedPrefs.getString("selected_theme", "0");
         try {
             int themeNumber = Integer.parseInt(theme);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+            }
             switch (themeNumber) {
                 case 0:
                     context.setTheme(R.style.MyAppTheme);
+                    window.setStatusBarColor(ContextCompat.getColor(context,R.color.colorPrimaryDark));
                     break;
                 case 1:
                     context.setTheme(R.style.MyAppTheme2);
+                    window.setStatusBarColor(ContextCompat.getColor(context,R.color.colorPrimaryDark2));
                     break;
                 case 2:
                     context.setTheme(R.style.MyAppTheme3);
+                    window.setStatusBarColor(ContextCompat.getColor(context,R.color.colorPrimaryDark3));
                     break;
                 case 3:
                     context.setTheme(R.style.MyAppTheme4);
+                    window.setStatusBarColor(ContextCompat.getColor(context,R.color.colorPrimaryDark4));
                     break;
                 case 4:
                     context.setTheme(R.style.MyAppTheme5);
+                    window.setStatusBarColor(ContextCompat.getColor(context,R.color.colorPrimaryDark5));
                     break;
                 default:
                     context.setTheme(R.style.MyAppTheme);

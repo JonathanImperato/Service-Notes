@@ -2,6 +2,7 @@ package notes.service.com.servicenotes;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -23,6 +24,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -63,13 +65,15 @@ public class MainActivity extends RoboActionBarActivity
     private SheetLayout mSheetLayout;
     private FloatingActionButton fab;
     private static final int REQUEST_CODE = 4;
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         ServiceUtils.setSavedAnimations(this);
-        super.onCreate(savedInstanceState);
-        ServiceUtils.setSavedTheme(this);
         ServiceUtils.setSavedLanguage(this);
+        Window window = getWindow();
+        ServiceUtils.setSavedTheme(this, window);
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // set app version and type on the nav drawer
         NavigationView navigationView2 = (NavigationView) findViewById(R.id.nav_view);
@@ -79,9 +83,10 @@ public class MainActivity extends RoboActionBarActivity
         String versionName = BuildConfig.VERSION_NAME;
         String wordVersion = getString(R.string.version_format);
         versionname.setText(wordVersion + " " + versionName);
-
+        
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        toolbar.setTitle(R.string.app_name);
         //To make the email sending working
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
@@ -180,8 +185,8 @@ public class MainActivity extends RoboActionBarActivity
                 return true;
 
             case R.id.action_donate:
-                Snackbar.make(this.findViewById(R.id.fab), getString(R.string.firstpopup), Snackbar.LENGTH_LONG).setAction("Action", null).show();
-                //startActivity(new Intent("android.intent.action.DonateActivity"));
+                //Snackbar.make(this.findViewById(R.id.fab), getString(R.string.firstpopup), Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                startActivity(new Intent("android.intent.action.DonateActivity"));
                 return true;
 
             default:
@@ -305,7 +310,7 @@ public class MainActivity extends RoboActionBarActivity
                 );
                 dialogBuilder.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton) {
-                                if (findViewById(R.id.name) != null) {
+                                if (message.getText().toString().trim().length() > 0) {
                                     GMailSender sender = new GMailSender("servicenotesapp@gmail.com", "servicenotes11");
                                     try {
                                         sender.sendMail("Service Notes feedback",
@@ -318,7 +323,7 @@ public class MainActivity extends RoboActionBarActivity
                                         Log.e("SendMail failed", e.getMessage(), e);
                                         Snackbar.make(MainActivity.this.findViewById(R.id.fab), getString(R.string.feedbacknotsent), Snackbar.LENGTH_LONG).setAction("Action", null).show();
                                     }
-                                } else {
+                                } else if (message.getText().toString().trim().length() == 0) {
                                     Snackbar.make(MainActivity.this.findViewById(R.id.fab), getString(R.string.feedbackempty), Snackbar.LENGTH_LONG).setAction("Action", null).show();
                                 }
                             }

@@ -4,46 +4,47 @@ package notes.service.com.servicenotes;
  * Created by Imperato on 15/01/2016.
  */
 
-        import android.app.AlertDialog;
-        import android.app.Dialog;
-        import android.content.DialogInterface;
-        import android.content.Intent;
-        import android.content.SharedPreferences;
-        import android.net.Uri;
-        import android.os.Bundle;
-        import android.os.StrictMode;
-        import android.speech.RecognizerIntent;
-        import android.support.design.widget.FloatingActionButton;
-        import android.support.design.widget.NavigationView;
-        import android.support.design.widget.Snackbar;
-        import android.support.v4.view.GravityCompat;
-        import android.support.v4.widget.DrawerLayout;
-        import android.support.v7.app.ActionBarDrawerToggle;
-        import android.support.v7.view.ActionMode;
-        import android.support.v7.widget.Toolbar;
-        import android.text.TextUtils;
-        import android.util.Log;
-        import android.view.LayoutInflater;
-        import android.view.Menu;
-        import android.view.MenuItem;
-        import android.view.View;
-        import android.widget.AdapterView;
-        import android.widget.EditText;
-        import android.widget.ListView;
-        import android.widget.TextView;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.StrictMode;
+import android.speech.RecognizerIntent;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.view.ActionMode;
+import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.Window;
+import android.widget.AdapterView;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.TextView;
 
-        import com.github.fabtransitionactivity.SheetLayout;
-        import com.miguelcatalan.materialsearchview.MaterialSearchView;
+import com.github.fabtransitionactivity.SheetLayout;
+import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
-        import java.util.ArrayList;
+import java.util.ArrayList;
 
-        import javax.inject.Inject;
+import javax.inject.Inject;
 
-        import notes.service.com.servicenotes.data.Note;
-        import notes.service.com.servicenotes.data.dao.NoteDAO;
-        import notes.service.com.servicenotes.widget.NotesAdapter;
-        import roboguice.activity.RoboActionBarActivity;
-        import roboguice.inject.InjectView;
+import notes.service.com.servicenotes.data.Note;
+import notes.service.com.servicenotes.data.dao.NoteDAO;
+import notes.service.com.servicenotes.widget.NotesAdapter;
+import roboguice.activity.RoboActionBarActivity;
+import roboguice.inject.InjectView;
 
 public class main_backup extends RoboActionBarActivity
         implements NavigationView.OnNavigationItemSelectedListener, SheetLayout.OnFabAnimationEndListener {
@@ -73,8 +74,9 @@ public class main_backup extends RoboActionBarActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         ServiceUtils.setSavedAnimations(this);
+        Window window = getWindow();
+        ServiceUtils.setSavedTheme(this, window);
         super.onCreate(savedInstanceState);
-        ServiceUtils.setSavedTheme(this);
         ServiceUtils.setSavedLanguage(this);
         setContentView(R.layout.activity_main);
         // set app version and type on the nav drawer
