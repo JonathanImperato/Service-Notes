@@ -339,7 +339,7 @@ public class DonateActivity extends Activity {
                 }
             } else {
                 Snackbar.make(findViewById(android.R.id.content),
-                        "You can not perform this action right now",
+                        "Transaction canceled",
                         Snackbar.LENGTH_LONG).setAction("Action", null).
                         show();
 
