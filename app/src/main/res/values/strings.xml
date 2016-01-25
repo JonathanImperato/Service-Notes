@@ -1,0 +1,211 @@
+<resources>
+    <string name="app_name">Service Notes</string>
+    <string name="firstpopup">Locked Content, not yet available</string>
+    <string name="share">Share</string>
+    <string name="rate">Rate</string>
+    <!-- Other strings -->
+    <string name="other_settings">Other</string>
+    <string name="other_info">Website</string>
+    <string name="other_library">Libraries</string>
+    <!-- Themes strings -->
+    <string name="theme_myapptheme">Green</string>
+    <string name="theme_myapptheme2">Violet</string>
+    <string name="themes_summary">Choose your theme</string>
+    <string name="themes_title">Theme</string>
+    <!-- Libraries strings -->
+    <string name="libraries">Libraries</string>
+    <string name="used_libraries_title">Used Libraries</string>
+    <!-- Backup strings -->
+    <string name="ok">I UNDERSTAND</string>
+    <string name="backuppopup">Restart is needed to apply the edits</string>
+    <string name="createbackup">Create Backup</string>
+    <string name="deletebackup">Reset App</string>
+    <string name="importbackup">Import Backup</string>
+    <string name="importbnote">Note: If you import a new Backup you will lose all the current notes</string>
+    <string name="deletebnote">If you click here you will reset the app and lose all the current notes</string>
+    <string name="backup1">The Backup will export all your notes in this folder: Backup folder: /storage/sdcard/ServiceNotes</string>
+    <string name="backup2">Backup folder: /storage/sdcard/ServiceNotes</string>
+    <!-- Animations strings -->
+    <string name="animations_summary">Enable or disable animations</string>
+    <string name="animations_title">Animations</string>
+    <!-- Languages strings -->
+    <string name="language_settings">Language</string>
+    <string name="language_title">Set language</string>
+    <string name="language_summary">Select app\'s language</string>
+    <string name="restart_text_language_popup">The app needs to be restarted to activate the new language.</string>
+    <string name="help_translating_title">Help translating</string>
+    <string name="help_translating_summary">Collaborate to this project and help translating the app</string>
+    <!-- Other strings -->
+    <string name="navigation_drawer_open">Open the navigation drawer</string>
+    <string name="navigation_drawer_close">Close the navigation drawer</string>
+    <string name="donate2">With PayPal you can make a donation and you choose the amount, Google Play does not support yet this funcion but you can choose one of this amount already setted. Thank you for the suport</string>
+    <string name="donate">Many people have asked to make a donation to support the development of this app.</string>
+    <string name="Home">Home</string>
+    <string name="Note">Note</string>
+    <string name="hint_book_content">Pubblications</string>
+    <string name="feed">Feedback</string>
+    <string name="Comunica">Talk</string>
+    <string name="accept">Acept</string>
+    <string name="action_bug">Report an issue</string>
+    <string name="action_donate">Hidden feature</string>
+    <string name="action_donate2">Donate</string>
+    <string name="action_info">This app has been developed by Jonathan Imperato</string>
+    <string name="action_rate">Rate</string>
+    <string name="action_settings">Settings</string>
+    <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
+    <string name="auth_google_play_services_client_facebook_display_name">Facebook</string>
+    <string name="auth_google_play_services_client_google_display_name">Google</string>
+    <string name="cast_notification_connected_message">Connected tp <g id="name">%1$s</g></string>
+    <string name="cast_notification_connecting_message">Connected to <g id="name">%1$s</g></string>
+    <string name="cast_notification_disconnect">Disconnected</string>
+    <string name="customization_settings">Customize</string>
+    <string name="decline">Decline</string>
+    <string name="done_button">Done</string>
+    <string name="gcm_defaultSenderId">482450084677</string>
+    <string name="gittyreporter_app_name">Gitty Reporter</string>
+    <string name="gittyreporter_title">Title</string>
+    <string name="gittyreporter_headline1">Report new Issue</string>
+    <string name="gittyreporter_headline2">Log In on GitHub</string>
+    <string name="gittyreporter_description">Describe your issue</string>
+    <string name="gittyreporter_hello_world">Hello world!</string>
+    <string name="gittyreporter_action_settings">Settings</string>
+    <string name="gittyreporter_device_info">Info about device:</string>
+    <string name="gittyreporter_login_username">Username:</string>
+    <string name="gittyreporter_login_password">Password:</string>
+    <string name="gittyreporter_login_skip">I don\'t have an account</string>
+    <string name="title_activity_oauth">OAuthActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="restart_text_popup">Restart is needed to apply the edits</string>
+    <string name="skip">Skip</string>
+    <string name="skip_button">Skip</string>
+    <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="store_picture_message">Allow Ad to store image in Picture gallery?</string>
+    <string name="store_picture_title">Save image</string>
+    <string name="database_summary">"Select database preference"</string>
+    <string name="database_title">Backup</string>
+    <string name="title_activity_my_intro">MyIntro</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="title_section1">HomePage</string>
+    <string name="title_section2">Notes</string>
+    <string name="title_section3">Report</string>
+    <string name="action_backup">Backup and Restore</string>
+    <string name="backupinfo">Backups are saved in the "ServiceNotes" \'s folder. If you want to import a database check first it is in the correct folder</string>
+    <!-- MainActivity strings -->
+    <string-array name="query_suggestions">
+        <item>Note</item>
+        <item>Notes</item>
+        <item>Mr</item>
+        <item>Mrs</item>
+        <item>Old</item>
+        <item>Young</item>
+        <item>Brown</item>
+    </string-array>
+    <string name="yes">Send</string>
+    <string name="cancel">Cancel</string>
+    <string name="feedbacknotsent">Feedback not sent, sorry</string>
+    <string name="feedbacksent">Feedback sent succesfully</string>
+    <string name="feedbackmsg">Enter your feedback</string>
+    <string name="feedbackempty">Feedback can not be empty, sorry</string>
+    <string name="title_activity_notes_list">Note</string>
+    <string name="no_notes">No Notes</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_about_notice">About</string>
+    <string name="action_licenses_notice">Open source licenses</string>
+    <string name="delete_notes_alert">Delete %s note(s)?</string>
+
+    <!-- Licenses dialog -->
+    <string name="dialog_licenses_notice_title">Open source licenses</string>
+
+    <string name="title_activity_display_file">DisplayFileActivity</string>
+    <string name="title_activity_upload_file">UploadFileActivity</string>
+    <string name="title_activity_download_file">DownloadFileActivity</string>
+    <string name="title_activity_retrieve_contents_file">RetrieveContentsActivity</string>
+    <string name="title_activity_connection">ConnectionActivity</string>
+    <string name="title_activity_read_file">ReadFile</string>
+    <!-- About dialog -->
+    <string name="version_format">Version:</string>
+    <string name="contributors">Contributors</string>
+    <string name="copyright_info">Jonathan Imperato, Italy</string>
+    <string name="source">Source Code</string>
+    <string name="drawerversion">Service Notes</string>
+    <string name="other">Other</string>
+    <!-- EditNoteActivity strings -->
+    <string name="title_activity_edit_note">Edit note</string>
+    <string name="action_save">Save</string>
+    <string name="action_note">Add Note</string>
+    <string name="Press_to_close">Press to close</string>
+    <string name="database">Database</string>
+    <!-- Intro -->
+    <string name="intro1_title">Welcome to Service Notes</string>
+    <string name="intro1_content">Save your notes safely and ordered</string>
+    <string name="intro2_title">Notes</string>
+    <string name="intro2_content">Find notes everywhere, in anytime</string>
+    <string name="intro3_title">Editable</string>
+    <string name="intro3_content">Edit your notes easily and save them</string>
+    <string name="intro4_title">More Functions</string>
+    <string name="intro4_content">More functions are in the drawer and more are cooming soon</string>
+
+    <string name="hint_note_title">Title</string>
+    <string name="hint_note_content">Content</string>
+    <string name="title_required">The note must have a title</string>
+    <string name="content_required">The note must have a content</string>
+    <!-- ViewNoteActivity strings -->
+    <string name="title_activity_view_note">Note</string>
+    <string name="action_edit_note">Edit note</string>
+    <string name="label_created_at">Created at:</string>
+    <string name="label_updated_at">Updated at:</string>
+    <!-- Example General settings -->
+    <string name="pref_header_general">General</string>
+
+    <string name="pref_title_social_recommendations">Abilita raccomandazioni via socials</string>
+    <string name="pref_description_social_recommendations">Raccomandazioni per le persone affinche ti contattino sulla base dei tuoi messaggi</string>
+
+    <string name="pref_title_display_name">Mostra oame</string>
+    <string name="pref_default_display_name">John Smith</string>
+
+    <string name="pref_title_add_friends_to_messages">Aggiungi amici ai messaggi</string>
+    <string-array name="pref_example_list_titles">
+        <item>Sempre</item>
+        <item>Quando possibile</item>
+        <item>Mai</item>
+    </string-array>
+    <string-array name="pref_example_list_values">
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+    </string-array>
+
+    <!-- Example settings for Data & Sync -->
+    <string name="pref_header_data_sync">Data &amp; Syncronizzazione</string>
+
+    <string name="pref_title_sync_frequency">Frequenza Syncronizzazione</string>
+    <string-array name="pref_sync_frequency_titles">
+        <item>15 minuti</item>
+        <item>30 minuti</item>
+        <item>1 ore</item>
+        <item>3 ore</item>
+        <item>6 ore</item>
+        <item>Mai</item>
+    </string-array>
+    <string-array name="pref_sync_frequency_values">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>180</item>
+        <item>360</item>
+        <item>-1</item>
+    </string-array>
+
+    <string name="pref_title_system_sync_settings">Impostazione syncronizzazione sistema</string>
+
+    <!-- Example settings for Notifications -->
+    <string name="pref_header_notifications">Notifiche</string>
+
+    <string name="pref_title_new_message_notifications">Nuova notifica messaggi</string>
+
+    <string name="pref_title_ringtone">Vibrazione</string>
+    <string name="pref_ringtone_silent">Silenzioso</string>
+
+    <string name="pref_title_vibrate">Vibra</string>
+
+</resources>

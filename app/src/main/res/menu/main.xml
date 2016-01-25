@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android2="http://schemas.android.com/apk/res-auto">
+    <!-- <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/ic_action_action_search"
+        android:orderInCategory="100"
+        android:title="@string/abc_search_hint"
+        android2:showAsAction="always" /> -->
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="200"
+        android:title="@string/action_settings" />
+    <item
+        android:id="@+id/action_donate"
+        android:orderInCategory="300"
+        android:title="@string/action_donate2" />
+
+</menu>

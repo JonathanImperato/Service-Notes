@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <style name="MyAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/black</item>
+        <item name="colorPrimaryMiddle">@color/colorPrimaryMiddle</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="MyAppTheme2" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowActionModeOverlay">true</item>
+        <item name="colorPrimary">@color/colorPrimary2</item>
+        <item name="colorPrimaryMiddle">@color/colorPrimaryMiddle2</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark2</item>
+        <item name="colorAccent">@color/colorAccent2</item>
+    </style>
+    <style name="MyAppTheme3" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowActionModeOverlay">true</item>
+        <item name="colorPrimary">@color/colorPrimary3</item>
+        <item name="colorPrimaryMiddle">@color/colorPrimaryMiddle3</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark3</item>
+        <item name="colorAccent">@color/colorAccent3</item>
+    </style>
+    <style name="MyAppTheme4" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowActionModeOverlay">true</item>
+        <item name="colorPrimary">@color/colorPrimary4</item>
+        <item name="colorPrimaryMiddle">@color/colorPrimaryMiddle4</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark4</item>
+        <item name="colorAccent">@color/colorAccent4</item>
+    </style>
+    <style name="MyAppTheme5" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowActionModeOverlay">true</item>
+        <item name="colorPrimary">@color/colorPrimary5</item>
+        <item name="colorPrimaryMiddle">@color/colorPrimaryMiddle5</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark5</item>
+        <item name="colorAccent">@color/colorAccent5</item>
+    </style>
+    <style name="TextLabel" parent="TextAppearance.AppCompat">
+        //hint color And Label Color in False State
+        <item name="android:textColorHint">@color/white</item>
+        <item name="android:textSize">14sp</item>
+        //Label color in True State And Bar Color False And True State
+        <item name="colorAccent">@color/white</item>
+        <item name="colorControlNormal">@color/white</item>
+        <item name="colorControlActivated">@color/white</item>
+    </style>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="CustomActionMode" parent="@style/Widget.AppCompat.ActionMode">
+        <item name="background">@color/primary_material_light</item>
+    </style>
+    <style name="MaterialSearchViewStyle">
+        <!-- Background for the search bar -->
+        <item name="searchBackground">?attr/colorPrimary</item>
+        <!-- Change voice icon -->
+        <item name="searchVoiceIcon">@drawable/ic_action_voice_search_inverted</item>
+        <!-- Change clear text icon -->
+        <item name="searchCloseIcon">@drawable/ic_action_navigation_close_inverted</item>
+        <!-- Change up icon -->
+        <item name="searchBackIcon">@drawable/ic_action_navigation_arrow_back_inverted</item>
+        <!-- Change icon for the suggestions -->
+        <item name="searchSuggestionIcon">@drawable/ic_suggestion</item>
+        <!-- Change background for the suggestions list view -->
+        <item name="searchSuggestionBackground">@android:color/white</item>
+        <!-- Change text color for edit text. This will also be the color of the cursor -->
+        <item name="android:textColor">@color/white</item>
+        <!-- Change hint text color for edit text -->
+        <item name="android:textColorHint">@color/white</item>
+        <!-- Hint for edit text -->
+        <item name="android:hint">@string/search_hint</item>
+    </style>
+
+</resources>

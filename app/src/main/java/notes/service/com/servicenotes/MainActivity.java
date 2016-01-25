@@ -83,7 +83,7 @@ public class MainActivity extends RoboActionBarActivity
         String versionName = BuildConfig.VERSION_NAME;
         String wordVersion = getString(R.string.version_format);
         versionname.setText(wordVersion + " " + versionName);
-        
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle(R.string.app_name);
