@@ -25,4 +25,5 @@ Used libraries
 [GittyReporter](https://github.com/PaoloRotolo/GittyReporter)<br>
 [MaterialSearchView](https://github.com/MiguelCatalan/MaterialSearchView)<br>
 [FabTransitionActivity](https://github.com/coyarzun89/FabTransitionActivity)<br>
+[Android In-App Billing v3 Library](https://github.com/anjlab/android-inapp-billing-v3)<br>
 
