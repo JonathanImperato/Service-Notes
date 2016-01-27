@@ -8,5 +8,4 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="abc_action_bar_default_height_material">30dp</dimen>
 
-    <dimen name="elevation_default">3dp</dimen>
 </resources>

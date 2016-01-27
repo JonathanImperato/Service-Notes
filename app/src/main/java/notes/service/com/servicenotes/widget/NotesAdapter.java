@@ -2,6 +2,8 @@ package notes.service.com.servicenotes.widget;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -104,12 +106,13 @@ public class NotesAdapter extends BaseAdapter implements Filterable {
     public long getItemId(int position) {
         return position;
     }
-
+    
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
         if (convertView == null) { // inflar componente visual
             convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.notes_row, parent, false);
+            //CardView cardsView = (CardView) convertView.findViewById(R.id.note_cardboard);
             holder = new ViewHolder(convertView);
             convertView.setTag(holder);
 
@@ -123,13 +126,22 @@ public class NotesAdapter extends BaseAdapter implements Filterable {
         holder.noteDateText.setText(DATETIME_FORMAT.format(noteViewWrapper.note.getUpdatedAt()));
         // Cambia il colore se la nota è cliccata
         if (noteViewWrapper.isSelected) {
-            holder.parent.setBackgroundColor(parent.getContext().getResources().getColor(R.color.selected_note));
+            CardView cardsView = (CardView) convertView.findViewById(R.id.note_cardboard);
+
+            // sfondo grigio quando nota selezionata
+            //cardsView.setCardBackgroundColor(Color.parseColor("#cacaca"));
+            cardsView.setCardBackgroundColor(R.drawable.selected_note);
+            //cardsView.setBackgroundResource(R.drawable.sfondo);
+            //holder.parent.setBackgroundColor(parent.getContext().getResources().getColor(R.color.selected_note));
             //LinearLayout.LayoutParams imageLayoutParams = new LinearLayout.LayoutParams(
             //   LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
-            // sfondo bianco quando nota non selezionata
 
-        } else
-            holder.parent.setBackgroundColor(parent.getContext().getResources().getColor(android.R.color.transparent));
+        } else {
+            CardView cardsView = (CardView) convertView.findViewById(R.id.note_cardboard);
+            // sfondo bianco quando nota non selezionata
+            cardsView.setCardBackgroundColor(Color.WHITE);
+            //holder.parent.setBackgroundColor(parent.getContext().getResources().getColor(android.R.color.transparent));
+        }
         return convertView;
     }
 

@@ -126,12 +126,13 @@ public class MainActivity extends RoboActionBarActivity
             editor.commit();
 
         }
-        //MaterialSearchView searchView = (MaterialSearchView) findViewById(R.id.search_view);
-        //searchView.setVoiceSearch(true);
+        MaterialSearchView searchView = (MaterialSearchView) findViewById(R.id.search_view);
+        searchView.setVoiceSearch(false);
         //searchView.setSuggestions(getResources().getStringArray(R.array.query_suggestions));
-        /*searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
+        searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+
                 return false;
             }
 
@@ -152,7 +153,7 @@ public class MainActivity extends RoboActionBarActivity
             public void onSearchViewClosed() {
                 //Do some magic
             }
-        });*/
+        });
     }
 
     @Override
@@ -169,9 +170,9 @@ public class MainActivity extends RoboActionBarActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
-        //MenuItem item = menu.findItem(R.id.action_search);
-        //MaterialSearchView searchView = (MaterialSearchView) findViewById(R.id.search_view);
-        //searchView.setMenuItem(item);
+        MenuItem item = menu.findItem(R.id.action_search);
+        MaterialSearchView searchView = (MaterialSearchView) findViewById(R.id.search_view);
+        searchView.setMenuItem(item);
         return true;
     }
 

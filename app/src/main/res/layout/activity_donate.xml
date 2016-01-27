@@ -38,18 +38,17 @@
                 android:layout_marginTop="10dp"
                 android:text="Dona con Google Play"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="#fff" />
-
-            <Button
-                android:id="@+id/addBtn"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:layout_marginTop="10dp"
-                android:background="#fff"
-                android:text="Google Play 1€"
-                android:textColor="?attr/colorPrimaryDark" />
+                android:textColor="#fff"/>
+                <Button
+                    android:id="@+id/addBtn"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#fff"
+                    android:text="Google Play 1€"
+                    android:textColor="?attr/colorPrimaryDark" />
 
             <Button
                 android:id="@+id/addBtn2"
