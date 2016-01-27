@@ -129,8 +129,8 @@ public class NotesAdapter extends BaseAdapter implements Filterable {
             CardView cardsView = (CardView) convertView.findViewById(R.id.note_cardboard);
 
             // sfondo grigio quando nota selezionata
-            //cardsView.setCardBackgroundColor(Color.parseColor("#cacaca"));
-            cardsView.setCardBackgroundColor(R.drawable.selected_note);
+            cardsView.setCardBackgroundColor(Color.parseColor("#cacaca"));
+            //cardsView.setCardBackgroundColor(R.drawable.selected_note);
             //cardsView.setBackgroundResource(R.drawable.sfondo);
             //holder.parent.setBackgroundColor(parent.getContext().getResources().getColor(R.color.selected_note));
             //LinearLayout.LayoutParams imageLayoutParams = new LinearLayout.LayoutParams(
