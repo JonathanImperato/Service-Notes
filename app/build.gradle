@@ -10,9 +10,10 @@ android {
         applicationId "notes.service.com.servicenotes"
         minSdkVersion 21
         targetSdkVersion 23
-        versionCode 18
-        versionName "1.2.6"
+        versionCode 22
+        versionName "1.2.9.2"
         multiDexEnabled true
+
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
@@ -35,6 +36,8 @@ dependencies {
     compile('com.mikepenz:aboutlibraries:5.3.4@aar') {
         transitive = true
     }
+
+    compile 'com.anjlab.android.iab.v3:library:1.0.+'
     compile 'com.google.android.gms:play-services-identity:7.8.0'
     compile('com.google.api-client:google-api-client-android:1.20.0') {
         exclude group: 'org.apache.httpcomponents'
