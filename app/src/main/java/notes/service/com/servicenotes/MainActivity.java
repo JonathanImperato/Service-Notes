@@ -118,11 +118,20 @@ public class MainActivity extends RoboActionBarActivity
 
         SharedPreferences settings = getSharedPreferences("prefs", 0);
         boolean firstRun = settings.getBoolean("firstRun", true);
+        boolean introview = settings.getBoolean("introview", false);
         if (firstRun) {  // here run your first-time instructions, for example :
             Intent intent = new Intent(this, MyIntro.class);
             startActivity(intent);
             SharedPreferences.Editor editor = settings.edit();
             editor.putBoolean("firstRun", false);
+            editor.putBoolean("introview", true);
+            editor.commit();
+
+        }
+        if (introview) {
+            showCardViewIntro(fab);
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putBoolean("introview", false);
             editor.commit();
 
         }
@@ -164,6 +173,21 @@ public class MainActivity extends RoboActionBarActivity
 
     protected void searchAction(String query) {
         //search action
+    }
+
+    private void showCardViewIntro(View view) {
+        /*new MaterialIntroView.Builder(this)
+                .enableDotAnimation(false)
+                .setFocusGravity(FocusGravity.CENTER)
+                .setFocusType(Focus.MINIMUM)
+                .setDelayMillis(2000)
+                .setTargetPadding(70)
+                .enableFadeAnimation(true)
+                .performClick(true)
+                .setInfoText(R.string.introview)
+                .setTarget(fab)
+                .setUsageId("intro_fab_button")
+                .show();*/
     }
 
     @Override

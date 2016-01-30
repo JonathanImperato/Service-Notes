@@ -3,6 +3,7 @@ package notes.service.com.servicenotes.widget;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +30,7 @@ public class NotesAdapter extends BaseAdapter implements Filterable {
     /**
      * Wrapper para notas. Util para cambiar el fondo de los item seleccionados.
      */
+    Paint paint = new Paint();
     public static final String KEY_TITLE = "title";
     public static final String KEY_BODY = "body";
     public static final String KEY_CATID = "id";
@@ -106,7 +108,7 @@ public class NotesAdapter extends BaseAdapter implements Filterable {
     public long getItemId(int position) {
         return position;
     }
-    
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
@@ -127,11 +129,10 @@ public class NotesAdapter extends BaseAdapter implements Filterable {
         // Cambia il colore se la nota è cliccata
         if (noteViewWrapper.isSelected) {
             CardView cardsView = (CardView) convertView.findViewById(R.id.note_cardboard);
-
             // sfondo grigio quando nota selezionata
-            //cardsView.setCardBackgroundColor(Color.parseColor("#cacaca"));
-            cardsView.setCardBackgroundColor(R.drawable.selected_note);
-            //cardsView.setBackgroundResource(R.drawable.sfondo);
+            cardsView.setCardBackgroundColor(Color.parseColor("#cacaca"));
+            //cardsView.setCardBackgroundColor(R.drawable.statelist_item_background);
+            //cardsView.setBackgroundResource(R.drawable.selected_note);
             //holder.parent.setBackgroundColor(parent.getContext().getResources().getColor(R.color.selected_note));
             //LinearLayout.LayoutParams imageLayoutParams = new LinearLayout.LayoutParams(
             //   LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
@@ -144,6 +145,7 @@ public class NotesAdapter extends BaseAdapter implements Filterable {
         }
         return convertView;
     }
+
 
     /**
      * Almacena componentes visuales para acceso rápido sin necesidad de buscarlos muy seguido.

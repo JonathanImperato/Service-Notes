@@ -2,9 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="notes.service.com.servicenotes">
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="com.android.vending.BILLING" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -13,47 +15,50 @@
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.VIBRATE" />
-    <meta-data android:name="com.google.android.backup.api_key"
+    <uses-permission android:name="com.android.vending.CHECK_LICENSE" />
+    <meta-data
+        android:name="com.google.android.backup.api_key"
         android:value="AEdPqrEAAAAIuj4JTkOIf7fBg_ofPn0MtURdXSqMyjaQd5EA2g" />
 
 
     <uses-feature
         android:glEsVersion="0x00020000"
-        android:required="true"/>
+        android:required="true" />
 
-    <uses-sdk android:minSdkVersion="19"
+    <uses-sdk
+        android:minSdkVersion="19"
         android:targetSdkVersion="23" />
 
 
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher_app"
+        android:label="@string/app_name"
+        android:theme="@style/MyAppTheme">
 
-        <application
-            android:allowBackup="true"
-            android:icon="@mipmap/ic_launcher"
-            android:label="@string/app_name"
-            android:theme="@style/MyAppTheme">
+        <meta-data
+            android:name="com.google.android.backup.api_key"
+            android:value="your_backup_service_key" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAfMR6sbGSVEalUev7RELQMpv3srrnAxvA" />
+        <meta-data
+            android:name="roboguice.modules"
+            android:value="notes.service.com.servicenotes.config.ConfigModule" />
 
-            <meta-data android:name="com.google.android.backup.api_key"
-                android:value="your_backup_service_key" />
-            <meta-data
-                android:name="com.google.android.gms.version"
-                android:value="@integer/google_play_services_version" />
-            <meta-data
-                android:name="com.google.android.geo.API_KEY"
-                android:value="AIzaSyAfMR6sbGSVEalUev7RELQMpv3srrnAxvA"/>
-            <meta-data
-                android:name="roboguice.modules"
-                android:value="notes.service.com.servicenotes.config.ConfigModule" />
-            <activity
-                android:name=".MainActivity"
-                android:label="@string/app_name">
-                <intent-filter>
-                    <action android:name="android.intent.action.MAIN" />
-                    <category android:name="android.intent.category.LAUNCHER" />
-                </intent-filter>
-            </activity>
         <activity
-            android:name="notes.service.com.servicenotes.SettingsActivity"
+            android:name=".MainActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SettingsActivity"
             android:parentActivityName=".MainActivity"
             tools:ignore="InnerclassSeparator,UnusedAttribute">
             <intent-filter>
@@ -61,35 +66,39 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-            <activity
-                android:name=".DisplayFileActivity"
-                android:label="@string/title_activity_display_file" >
-            </activity>
-            <activity
-                android:name=".NotesBackupActivity"
-                android:label="Google Backup" >
-            </activity>
-            <activity
-                android:name=".UploadFileActivity"
-                android:label="@string/title_activity_upload_file" >
-            </activity>
-            <activity
-                android:name=".RetrieveContentsActivity"
-                android:label="@string/title_activity_retrieve_contents_file" />
-            <activity
-                android:name=".EditNoteActivity"
-                android:label="@string/title_activity_edit_note"
-                android:parentActivityName=".MainActivity" />
-            <activity
-                android:name=".LibrariesActivity"
-                android:label="@string/libraries"  />
-            <activity
-                android:name=".ViewNoteActivity"
-                android:label="@string/title_activity_view_note"  />
+        <activity
+            android:name=".DisplayFileActivity"
+            android:label="@string/title_activity_display_file"></activity>
+        <activity
+            android:name=".NotesBackupActivity"
+            android:label="Google Backup"></activity>
+        <activity
+            android:name=".UploadFileActivity"
+            android:label="@string/title_activity_upload_file"></activity>
+        <activity
+            android:name=".RetrieveContentsActivity"
+            android:label="@string/title_activity_retrieve_contents_file" />
+        <activity
+            android:name=".Contributors"
+            android:label="@string/contributors" />
+        <activity
+            android:name=".EditNoteActivity"
+            android:label="@string/title_activity_edit_note"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".LibrariesActivity"
+            android:label="@string/libraries" />
+        <activity
+            android:name=".Info"
+            android:label="Info"
+            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".ViewNoteActivity"
+            android:label="@string/title_activity_view_note" />
         <activity
             android:name=".DonateActivity"
-            android:label="@string/action_donate"
-            android:parentActivityName=".MainActivity" >
+            android:label="@string/action_donate2"
+            android:parentActivityName=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.DonateActivity" />
 
@@ -102,22 +111,21 @@
         <activity
             android:name=".MyIntro"
             android:label="@string/title_activity_my_intro"
-            android:launchMode="singleTask" >
-        </activity>
+            android:launchMode="singleTask"></activity>
 
-            <activity
-                android:name=".GoogleBackup"
-                android:label="Google Backup"
-                android:parentActivityName=".MainActivity" >
-                <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value="notes.service.com.servicenotes.MainActivity" />
-            </activity>
+        <activity
+            android:name=".GoogleBackup"
+            android:label="Google Backup"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="notes.service.com.servicenotes.MainActivity" />
+        </activity>
 
         <activity
             android:name=".Gitty"
             android:label="@string/action_bug"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.Gitty" />
 
@@ -127,14 +135,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="notes.service.com.servicenotes.MainActivity" />
         </activity>
-            <activity
-                android:name=".Backup"
-                android:label="@string/action_backup"
-                android:parentActivityName=".MainActivity" >
-                <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value="notes.service.com.servicenotes.MainActivity" />
-            </activity>
+        <activity
+            android:name=".Backup"
+            android:label="@string/action_backup"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="notes.service.com.servicenotes.MainActivity" />
+        </activity>
 
     </application>
 </manifest>

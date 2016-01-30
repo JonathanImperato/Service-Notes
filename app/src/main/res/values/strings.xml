@@ -71,6 +71,7 @@
     <string name="no_notes">No Notes</string>
     <string name="action_delete">Delete</string>
     <string name="delete_notes_alert">Delete %s note(s)?</string>
+    <string name="introview">Add a note</string>
 
     <!-- Licenses dialog -->
 
