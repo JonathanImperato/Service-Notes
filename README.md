@@ -27,4 +27,5 @@ Used libraries
 [Circular Reveal](https://github.com/ozodrukh/CircularReveal)<br>
 [FabTransitionActivity](https://github.com/coyarzun89/FabTransitionActivity)<br>
 [Android In-App Billing v3 Library](https://github.com/anjlab/android-inapp-billing-v3)<br>
+[AppUpdater](https://github.com/javiersantos/AppUpdater)<br>
 
