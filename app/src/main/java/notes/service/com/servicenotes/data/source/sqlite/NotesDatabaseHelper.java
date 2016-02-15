@@ -19,8 +19,17 @@ public class NotesDatabaseHelper extends SQLiteOpenHelper {
     private static final String TAG = NotesDatabaseHelper.class.getSimpleName();
     private static final String DATABASE_SCHEMA_FILE_NAME_PATTERN = "notes_schema-v%s.sql";
     private static final String DATABASE_NAME = "notes.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final String note = "note";
+    private static final String NAME = "name";
+    private static final String ROWID = "_id";
 
+    //content2 is the address
+    private static final String content2 = "content2";
+    private static final String emails = "emails";
+    private static final String phone = "phone";
+    private static final String gender = "gender";
+    private static final int DATABASE_VERSION = 2;
+    SQLiteDatabase db;
     private final Context context;
 
     /**
@@ -62,15 +71,24 @@ public class NotesDatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+
     /**
      * {@inheritDoc}
      */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         Log.w(TAG, "Upgrading database from version " + oldVersion + " to " + newVersion + ", which will destroy all old data");
-        context.deleteDatabase(DATABASE_NAME);
-        onCreate(db);
-    }
+        String address = "ALTER TABLE " + note + " ADD COLUMN " + content2 + " TEXT";
+        String email = "ALTER TABLE " + note + " ADD COLUMN " + emails + " TEXT";
+        String phones = "ALTER TABLE " + note + " ADD COLUMN " + phone + " TEXT";
 
+        if (oldVersion < newVersion) {
+
+            db.execSQL(address);
+            db.execSQL(email);
+            db.execSQL(phones);
+        } else
+            onCreate(db);
+    }
 
 }

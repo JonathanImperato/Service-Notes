@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
-                android:text="Dona con Google Play"
+                android:text="@string/donatewithgoogle"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#fff"/>
                 <Button
@@ -89,7 +89,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
-                android:text="Dona con PayPal"
+                android:text="@string/donatewithpaypal"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#fff" />
 

@@ -17,6 +17,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorPrimaryMiddle">@color/colorPrimaryMiddle</item>
         <item name="colorAccent">@color/colorAccent</item>
+
     </style>
 
     <style name="MyAppTheme2" parent="Theme.AppCompat.Light.NoActionBar">

@@ -32,13 +32,17 @@ public class EditNoteActivity extends RoboActionBarActivity {
     public static Activity activity;
     @InjectView(R.id.note_title)
     private EditText noteTitleText;
-    // @InjectView(R.id.note_book)
-    //private EditText noteBookText;
     @InjectView(R.id.note_content)
     private EditText noteContentText;
+    @InjectView(R.id.note_content2)
+    private EditText noteContentText2;
+    @InjectView(R.id.note_emails)
+    private EditText noteEmails;
+    @InjectView(R.id.note_phone)
+    private EditText notePhone;
+
     @InjectView(R.id.action_save)
     private FloatingActionButton fab;
-
     private Note note;
 
     /**
@@ -91,21 +95,19 @@ public class EditNoteActivity extends RoboActionBarActivity {
         //  getSupportActionBar().setDisplayHomeAsUpEnabled(true); // Muestra la flecha hacia atrás
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setNavigationIcon(R.drawable.ic_navigation_arrow_back);
-        activity = this;
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setResult(RESULT_CANCELED);
-                activity.finish();
-                ServiceUtils.setSavedAnimations(EditNoteActivity.this);
-            }
-        });
+        toolbar.setTitle(getResources().getString(R.string.title_activity_edit_note));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ServiceUtils.setSavedAnimations(EditNoteActivity.this);
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
+        setSupportActionBar(toolbar);
         note = (Note) getIntent().getSerializableExtra(EXTRA_NOTE); // Recuperar la nota del Intent
+
         if (note != null) { // Editar nota existente
             noteTitleText.setText(note.getTitle());
-            //   noteBookText.setText(note.getBook());
             noteContentText.setText(note.getContent());
+            noteContentText2.setText(note.getContent2());
+            noteEmails.setText(note.getEmails());
+            notePhone.setText(note.getPhone());
         } else { // Nueva nota
             note = new Note();
             note.setCreatedAt(new Date());
@@ -168,9 +170,10 @@ public class EditNoteActivity extends RoboActionBarActivity {
      */
     private void setNoteResult() {
         note.setTitle(noteTitleText.getText().toString().trim());
-        //forse questa no!!!!!
-        //note.setContent(noteBookText.getText().toString().trim());
         note.setContent(noteContentText.getText().toString().trim());
+        note.setContent2(noteContentText2.getText().toString().trim());
+        note.setEmails(noteEmails.getText().toString().trim());
+        note.setPhone(notePhone.getText().toString().trim());
         note.setUpdatedAt(new Date());
         Intent resultIntent = new Intent();
         ServiceUtils.setSavedAnimations(this);

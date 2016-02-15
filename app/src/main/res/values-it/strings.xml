@@ -5,6 +5,10 @@
     <string name="other_settings">Altro</string>
     <string name="other_info">Sito Web</string>
     <string name="other_library">Librierie</string>
+    <string name="check_updates">Controlla Aggiornamenti</string>
+    <string name="check_updates_summary">Controlla se ci sono aggiornamenti disponibili per l\'app</string>
+    <string name="beta_title">Partecipa al Beta</string>
+    <string name="beta_desc">Partecipa al Beta testing dell\'app</string>
     <!-- Themes strings -->
     <string name="themes_summary">Scegli il tema</string>
     <string name="themes_title">Tema</string>
@@ -20,13 +24,18 @@
     <string name="importbnote">Nota: Se importi un Backup perderai tutte le note attuali</string>
     <string name="deletebnote">Cliccando Resetta perderai tutte le tue attuali note</string>
     <string name="backup1">Il Backup esportera tutte le tue note in questa cartella: Cartella di Backup: /storage/sdcard/ServiceNotes</string>
+    <string name="backup">Backup</string>
+    <string name="info">Info</string>
     <!-- Animations strings -->
     <string name="animations_summary">Attiva o disattiva le animazioni</string>
     <string name="animations_title">Animazioni</string>
+    <!-- Donate strings -->
+    <string name="donatewithgoogle">Dona con Google Play</string>
+    <string name="donatewithpaypal">Dona con PayPal</string>
     <!-- Languages strings -->
     <string name="language_settings">Lingua</string>
     <string name="language_title">Imposta lingua</string>
-    <string name="language_summary">Imposta la lingua dell\'app</string>
+    <string name="language_summary">Imposta la lingua dell\'app. Nota:Alcune lingue potrebbero non essere accurate.</string>
     <string name="help_translating_title">Aiuta a tradurre</string>
     <string name="help_translating_summary">Collabora a questo progetto ed aiutaci a tradurre l\'app</string>
     <!-- Other strings -->
@@ -71,7 +80,8 @@
     <string name="no_notes">Nessuna Nota</string>
     <string name="action_delete">Elimina</string>
     <string name="delete_notes_alert">Eliminare %s nota(e)?</string>
-    <string name="introview">Aggiungi una nota</string>
+    <string name="introview">Puoi aggiungere una nota cliccando qua</string>
+    <string name="gotit">HO CAPITO</string>
     <!-- Licenses dialog -->
 
     <!-- About dialog -->
@@ -94,7 +104,6 @@
     <string name="intro4_content">Alcune funzioni sono nel menu di fianco e molte altre saranno presto disponibili</string>
 
 
-
     <string name="title_activity_display_file">DisplayFileActivity</string>
     <string name="title_activity_upload_file">UploadFileActivity</string>
     <string name="title_activity_retrieve_contents_file">RetrieveContentsActivity</string>
@@ -102,6 +111,7 @@
 
     <string name="hint_note_title">Titolo</string>
     <string name="hint_note_content">Descrizione</string>
+    <string name="hint_note_adress">Indirizzo</string>
     <string name="title_required">La nota deve avere un titolo</string>
     <string name="content_required">La nota deve avere una descrizione</string>
 
@@ -109,10 +119,15 @@
     <string name="title_activity_view_note">Nota</string>
     <string name="label_created_at">Creata alle:</string>
     <string name="label_updated_at">Aggiornata alle:</string>
-    <!-- Example General settings -->
-
-    <!-- Example settings for Data & Sync -->
-
-    <!-- Example settings for Notifications -->
+    <!-- App Updater strings -->
+    <string name="appupdater_update_available">Nuovo aggiornamento disponibile!</string>
+    <string name="appupdater_update_available_description_dialog">L\'aggiornamento %1$s è disponibile al download. Scarica l\'ultima versione contenente miglioramenti, risoluzione di errori e nuove funzioni per %2$s.</string>
+    <string name="appupdater_update_available_description_snackbar">Aggiornamento %1$s disponibile!</string>
+    <string name="appupdater_update_available_description_notification">Aggiornamento %1$s di %2$s è disponibile al download</string>
+    <string name="appupdater_update_not_available">Nessun aggiornamento disponibile</string>
+    <string name="appupdater_update_not_available_description">Hai l\'ultima versione di %s!</string>
+    <string name="appupdater_btn_update">Aggiorna</string>
+    <string name="appupdater_btn_disable">Non mostrare più</string>
+    <string name="appupdater_btn_dismiss">Annulla</string>
 
 </resources>

@@ -16,6 +16,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="com.android.vending.CHECK_LICENSE" />
+
     <meta-data
         android:name="com.google.android.backup.api_key"
         android:value="AEdPqrEAAAAIuj4JTkOIf7fBg_ofPn0MtURdXSqMyjaQd5EA2g" />
@@ -83,15 +84,14 @@
             android:label="@string/contributors" />
         <activity
             android:name=".EditNoteActivity"
-            android:label="@string/title_activity_edit_note"
-            android:parentActivityName=".MainActivity" />
+            android:label="@string/title_activity_edit_note" />
         <activity
             android:name=".LibrariesActivity"
             android:label="@string/libraries" />
         <activity
             android:name=".Info"
             android:label="Info"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ViewNoteActivity"
             android:label="@string/title_activity_view_note" />

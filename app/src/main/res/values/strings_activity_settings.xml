@@ -28,10 +28,12 @@
         <item name="default" translatable="false">Default</item>
         <item name="english" translatable="false">English</item>
         <item name="italian" translatable="false">Italiano</item>
+        <item name="portuguese" translatable="false">Portuguese</item>
     </string-array>
     <string-array name="languages_values">
         <item name="default" translatable="false">default</item>
         <item name="english" translatable="false">en</item>
         <item name="italian" translatable="false">it</item>
+        <item name="portuguese" translatable="false">pt</item>
     </string-array>
 </resources>

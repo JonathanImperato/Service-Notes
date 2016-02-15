@@ -47,24 +47,81 @@
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
+        android:id="@+id/text_input_layout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/action_save"
+        android:layout_alignParentStart="true">
+
+        <EditText
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:lines="1"
+            android:id="@+id/note_content2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/text_input_layout"
+            android:hint="@string/hint_note_adress"
+            android:paddingLeft="20dp" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/text_input_layout4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_input_layout3"
+        android:layout_alignParentStart="true">
+
+        <EditText
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:id="@+id/note_emails"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/text_input_layout"
+            android:hint="Email no ref"
+            android:paddingLeft="20dp" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/text_input_layout5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_input_layout4"
+        android:layout_alignParentStart="true">
+
+        <EditText
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:id="@+id/note_phone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/text_input_layout"
+            android:hint="Phone no ref"
+            android:paddingLeft="20dp" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
         android:id="@+id/text_input_layout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/text_input_layout"
-        android:layout_marginTop="30dp">
+        android:layout_below="@+id/text_input_layout5"
+        android:layout_alignParentLeft="true">
 
         <EditText
             android:id="@+id/note_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/text_input_layout"
-            android:gravity="start"
             android:hint="@string/hint_note_content"
             android:inputType="textMultiLine"
             android:paddingLeft="20dp" />
     </android.support.design.widget.TextInputLayout>
+
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/action_save"
@@ -81,4 +138,5 @@
         android:title="@string/action_save"
         app:backgroundTint="?attr/colorAccent"
         app:fabSize="mini" />
+
 </RelativeLayout>

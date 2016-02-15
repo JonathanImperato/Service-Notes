@@ -43,9 +43,13 @@ public class NoteSQLiteDAO implements NoteDAO {
         Cursor cursor = null;
         SQLiteDatabase database = databaseHelper.getReadableDatabase();
         try {
-            String[] columns = {NoteEntry._ID,
+            String[] columns = {
+                    NoteEntry._ID,
                     NoteEntry.TITLE,
                     NoteEntry.CONTENT,
+                    NoteEntry.CONTENT2,
+                    NoteEntry.EMAILS,
+                    NoteEntry.PHONE,
                     NoteEntry.CREATED_AT,
                     NoteEntry.UPDATED_AT};
             cursor = database.query(NoteEntry.TABLE_NAME, columns, null, null, null, null, null);
@@ -55,6 +59,9 @@ public class NoteSQLiteDAO implements NoteDAO {
                 note.setId(cursor.getLong(cursor.getColumnIndexOrThrow(NoteEntry._ID)));
                 note.setTitle(cursor.getString(cursor.getColumnIndexOrThrow(NoteEntry.TITLE)));
                 note.setContent(cursor.getString(cursor.getColumnIndexOrThrow(NoteEntry.CONTENT)));
+                note.setContent2(cursor.getString(cursor.getColumnIndexOrThrow(NoteEntry.CONTENT2)));
+                note.setEmails(cursor.getString(cursor.getColumnIndexOrThrow(NoteEntry.EMAILS)));
+                note.setPhone(cursor.getString(cursor.getColumnIndexOrThrow(NoteEntry.PHONE)));
                 note.setCreatedAt(new Date(cursor.getLong(cursor.getColumnIndexOrThrow(NoteEntry.CREATED_AT))));
                 note.setUpdatedAt(new Date(cursor.getLong(cursor.getColumnIndexOrThrow(NoteEntry.UPDATED_AT))));
                 result.add(note);
@@ -88,6 +95,9 @@ public class NoteSQLiteDAO implements NoteDAO {
             ContentValues values = new ContentValues();
             values.put(NoteEntry.TITLE, note.getTitle());
             values.put(NoteEntry.CONTENT, note.getContent());
+            values.put(NoteEntry.CONTENT2, note.getContent2());
+            values.put(NoteEntry.EMAILS, note.getEmails());
+            values.put(NoteEntry.PHONE, note.getPhone());
             values.put(NoteEntry.CREATED_AT, note.getCreatedAt().getTime());
             values.put(NoteEntry.UPDATED_AT, note.getUpdatedAt().getTime());
             long rowId = database.insert(NoteEntry.TABLE_NAME, null, values);
@@ -115,6 +125,9 @@ public class NoteSQLiteDAO implements NoteDAO {
             ContentValues values = new ContentValues();
             values.put(NoteEntry.TITLE, note.getTitle());
             values.put(NoteEntry.CONTENT, note.getContent());
+            values.put(NoteEntry.CONTENT2, note.getContent2());
+            values.put(NoteEntry.EMAILS, note.getEmails());
+            values.put(NoteEntry.PHONE, note.getPhone());
             values.put(NoteEntry.UPDATED_AT, note.getUpdatedAt().getTime());
             String[] whereArgs = {String.valueOf(note.getId())};
             database.update(NoteEntry.TABLE_NAME, values, WHERE_ID_CLAUSE, whereArgs);
@@ -154,6 +167,9 @@ public class NoteSQLiteDAO implements NoteDAO {
         private static final String TABLE_NAME = "note";
         private static final String TITLE = "title";
         private static final String CONTENT = "content";
+        private static final String CONTENT2 = "content2";
+        private static final String EMAILS = "emails";
+        private static final String PHONE = "phone";
         private static final String CREATED_AT = "created_at";
         private static final String UPDATED_AT = "updated_at";
     }

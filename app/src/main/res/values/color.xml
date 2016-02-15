@@ -1,8 +1,9 @@
 <resources>
 
 
-    <item name="white" type="color">#FFFFFFFF</item>
+    <color name="white" type="color">#FFFFFFFF</color>
     <!-- Notes Color-->
+    <color name="blacks">#000</color>
     <!-- MyAppTheme-->
     <color name="colorPrimary">#00bfa5</color>
     <color name="colorPrimaryDark">#058576</color>

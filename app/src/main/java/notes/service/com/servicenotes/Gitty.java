@@ -9,14 +9,14 @@ public class Gitty extends GittyReporter {
 
     @Override
     public void init(Bundle savedInstanceState) {
-        ServiceUtils.setSavedTheme(this);
+
         // Set where Gitty will send issues.
         // (username, repository name);
         setTargetRepository("Heromine", "Service-Notes");
 
         // Set Auth token to open issues if user doesn't have a GitHub account
         // For example, you can register a bot account on GitHub that will open bugs for you.
-        setGuestOAuth2Token("3ed0f3c5910f8c79ca6d93874490c90461081503");
+        setGuestOAuth2Token("c05fa0cf62ade3764d3ecbb8d76a32a7d9c1e947");
 
 
         // OPTIONAL METHODS

@@ -3,7 +3,6 @@ package notes.service.com.servicenotes.widget;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
-import android.graphics.Paint;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,22 +29,22 @@ public class NotesAdapter extends BaseAdapter implements Filterable {
     /**
      * Wrapper para notas. Util para cambiar el fondo de los item seleccionados.
      */
-    Paint paint = new Paint();
-    public static final String KEY_TITLE = "title";
-    public static final String KEY_BODY = "body";
-    public static final String KEY_CATID = "id";
+
     private static final String DATABASE_TABLE = "notes_schema-v%s.sql";
     private SQLiteDatabase mDb;
     private ArrayList<NotesAdapter.NoteViewWrapper> notesData;
     public Context context;
-    public ArrayList<Integer> employeeArrayList;
-    public ArrayList<Integer> orig;
+    private ArrayList notesData2;
+
+    public void notifyDataSetChanged() {
+        super.notifyDataSetChanged();
+    }
 
     @Override
     public Filter getFilter() {
-
         return null;
     }
+
 
     public static class NoteViewWrapper {
 
@@ -155,6 +154,9 @@ public class NotesAdapter extends BaseAdapter implements Filterable {
         private TextView noteIdText;
         private TextView noteTitleText;
         private TextView noteContentText;
+        private TextView noteContentText2;
+        private TextView noteEmails;
+        private TextView notePhone;
         private TextView noteDateText;
 
         private View parent;

@@ -39,14 +39,15 @@
         android:layout_marginRight="@dimen/fab_margin"
         android:src="@drawable/ic_edit"
         app:backgroundTint="?attr/colorAccent" />
+
     <com.github.fabtransitionactivity.SheetLayout
         android:id="@+id/bottom_sheet"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="bottom"
-        app:ft_container_gravity="center"
+        android:elevation="2dp"
         app:ft_color="?attr/colorAccent"
-        android:elevation="2dp"/>
+        app:ft_container_gravity="center" />
 
     <TableLayout
         android:id="@+id/tableLayout"
@@ -122,8 +123,31 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="#ff000000"
             android:textStyle="bold" />
-
+        <TextView
+            android:id="@+id/note_content2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="#ff000000" />
+        <TextView
+            android:id="@+id/note_emails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="70dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="#ff000000"
+            android:autoLink="email"/>
+        <TextView
+            android:id="@+id/note_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="90dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="#ff000000"
+            android:autoLink="phone"/>
         <ScrollView
+            android:layout_marginTop="80dp"
             android:id="@+id/scroll_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -134,10 +158,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/note_title"
-                android:layout_margin="8dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginBottom="6dp"
                 android:textColor="#ff000000" />
         </ScrollView>
+
     </RelativeLayout>
 
 </RelativeLayout>

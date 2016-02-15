@@ -11,6 +11,9 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 
+import com.github.javiersantos.appupdater.AppUpdater;
+import com.github.javiersantos.appupdater.enums.Display;
+import com.github.javiersantos.appupdater.enums.UpdateFrom;
 import com.google.android.gms.analytics.Tracker;
 
 
@@ -150,6 +153,35 @@ public class SettingsActivity extends PreferenceActivity {
             }
         });
 
+        Preference updates = findPreference("updates");
+        updates.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                if (BuildConfig.TYPE.equals("beta") || BuildConfig.TYPE.equals("debug")) {
+                    new AppUpdater(SettingsActivity.this)
+                            .setGitHubUserAndRepo("Heromine", "Service-Notes")
+                            .setUpdateFrom(UpdateFrom.GITHUB)
+                            .setDisplay(Display.DIALOG)
+                            .showAppUpdated(true)
+                            .start();
+                } else if (BuildConfig.TYPE.equals("release")) {
+                    new AppUpdater(SettingsActivity.this)
+                            .setUpdateFrom(UpdateFrom.GOOGLE_PLAY)
+                            .setDisplay(Display.DIALOG)
+                            .showAppUpdated(true)
+                            .start();
+                }
+                return true;
+            }
+        });
+        Preference betatest = findPreference("beta_testing");
+        betatest.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://plus.google.com/communities/101637358119591156518")));
+                        return false;
+            }
+        });
     }
 
     @Override

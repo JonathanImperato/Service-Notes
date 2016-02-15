@@ -40,6 +40,12 @@ public class ViewNoteActivity extends RoboActionBarActivity implements SheetLayo
     //private TextView noteBookText;
     @InjectView(R.id.note_content)
     private TextView noteContentText;
+    @InjectView(R.id.note_content2)
+    private TextView noteContentText2;
+    @InjectView(R.id.note_emails)
+    private TextView noteEmails;
+    @InjectView(R.id.note_phone)
+    private TextView notePhone;
     @InjectView(R.id.note_created_at_date)
     private TextView noteCreatedAtDateText;
     @InjectView(R.id.note_updated_at_date)
@@ -90,6 +96,7 @@ public class ViewNoteActivity extends RoboActionBarActivity implements SheetLayo
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowTitleEnabled(true);
             setSupportActionBar(toolbar);
+            ServiceUtils.setSavedAnimations(ViewNoteActivity.this);
         }
         //Get status bar color from the utils activity and set it
 
@@ -122,6 +129,9 @@ public class ViewNoteActivity extends RoboActionBarActivity implements SheetLayo
         noteTitleText.setText(note.getTitle());
         // noteBookText.setText(note.getBook());
         noteContentText.setText(note.getContent());
+        noteContentText2.setText(note.getContent2());
+        noteEmails.setText(note.getEmails());
+        notePhone.setText(note.getPhone());
         noteCreatedAtDateText.setText(DATETIME_FORMAT.format(note.getCreatedAt()));
         noteUpdatedAtDateText.setText(DATETIME_FORMAT.format(note.getUpdatedAt()));
     }

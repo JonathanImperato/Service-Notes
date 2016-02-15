@@ -1,54 +1,22 @@
 package notes.service.com.servicenotes;
 
-import android.app.Activity;
-import android.app.PendingIntent;
-import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentSender.SendIntentException;
-import android.content.ServiceConnection;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.IBinder;
-import android.os.RemoteException;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.Toast;
 
-import com.android.vending.billing.IInAppBillingService;
+import com.anjlab.android.iab.v3.BillingProcessor;
+import com.anjlab.android.iab.v3.TransactionDetails;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-
-public class DonateActivity extends Activity {
-    public static Activity activity;
-    public static Toolbar toolbar;
-    IInAppBillingService mservice;
-    ServiceConnection connection;
-    String inappid = "gp1"; //replace this with your in-app product id
-    String inappid2 = "gp2";
-    String inappid3 = "gp3";
-    String inappid5 = "gp5";
-
-    ServiceConnection mServiceConn = new ServiceConnection() {
-        @Override
-        public void onServiceDisconnected(ComponentName name) {
-            mservice = null;
-        }
-
-        @Override
-        public void onServiceConnected(ComponentName name,
-                                       IBinder service) {
-            mservice = IInAppBillingService.Stub.asInterface(service);
-        }
-    };
-
+public class DonateActivity extends AppCompatActivity implements BillingProcessor.IBillingHandler {
+    BillingProcessor bp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,89 +26,24 @@ public class DonateActivity extends Activity {
         ServiceUtils.setSavedTheme(this, window);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donate);
-        activity = this;
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar); // Setting toolbar with setSupportActionBar()
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.action_donate2);
-        //Get status bar color from the utils activity and set it
-        toolbar.setNavigationIcon(R.drawable.ic_navigation_arrow_back);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ServiceUtils.setSavedAnimations(DonateActivity.this);
-                activity.finish();
-            }
-        });
+        toolbar.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        connection = new ServiceConnection() {
-
-            @Override
-            public void onServiceDisconnected(ComponentName name) {
-                mservice = null;
-
-            }
-
-            @Override
-            public void onServiceConnected(ComponentName name, IBinder service) {
-                mservice = IInAppBillingService.Stub.asInterface(service);
-            }
-        };
-
-        Intent serviceIntent = new Intent("com.android.vending.billing.InAppBillingService.BIND");
-        serviceIntent.setPackage("com.android.vending");
-        bindService(serviceIntent, mServiceConn, Context.BIND_AUTO_CREATE);
-
-
+        bp = new BillingProcessor(this, "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqh7t8U87IitQWGwtM30dA253ec+YeskONuZXJnnpJYit/e0XDlxKB95Nb1658H5cRMbxqvwzUfyRIS64LgJWP/EtrqSNjCNuccvRj1psZylvkU9z+MCHm3pxJ7kS9wadVtp7Biw8KBPK7QnEdX2arQpykbdNipJHjQBn7D4ynonC/emoZKv4KIIScOo4j2Tg09EyFzNnXBBbWh9xKx4w9kUbXbA0hHqKA/iryri0fgy+1QX1+S74FHLXqNvJb5Xy5ZKQcmZZW+xve/FybfCWkLhkH0o6Rc191Ff4MgSH47i3oHy0v1yF2icPekc6fSeBt10E88H+yuTlWfz1ZO/efwIDAQAB", this);
+        bp.consumePurchase("gp1");
+        bp.consumePurchase("gp2");
+        bp.consumePurchase("gp3");
+        bp.consumePurchase("gp5");
         Button purchaseBtn = (Button) findViewById(R.id.addBtn);
         purchaseBtn.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                ArrayList skuList = new ArrayList();
-                skuList.add(inappid);
-                Bundle querySkus = new Bundle();
-
-                querySkus.putStringArrayList("ITEM_ID_LIST", skuList);
-                Bundle skuDetails;
-                try {
-                    skuDetails = mservice.getSkuDetails(3, getPackageName(),
-                            "inapp", querySkus);
-
-                    int response = skuDetails.getInt("RESPONSE_CODE");
-                    if (response == 0) {
-                        ArrayList<String> responseList = skuDetails
-                                .getStringArrayList("DETAILS_LIST");
-
-                        for (String thisResponse : responseList) {
-                            JSONObject object = new JSONObject(thisResponse);
-                            String sku = object.getString("productId");
-                            String price = object.getString("price");
-                            if (sku.equals(inappid)) {
-                                System.out.println("price " + price);
-                                Bundle buyIntentBundle = mservice
-                                        .getBuyIntent(3, getPackageName(), sku,
-                                                "inapp",
-                                                "bGoa+V7g/yqDXvKRqq+JTFn4uQZbPiQJo4pf9RzJ");
-                                PendingIntent pendingIntent = buyIntentBundle
-                                        .getParcelable("BUY_INTENT");
-                                startIntentSenderForResult(
-                                        pendingIntent.getIntentSender(), 1001,
-                                        new Intent(), Integer.valueOf(0),
-                                        Integer.valueOf(0), Integer.valueOf(0));
-                            }
-                        }
-                    }
-                } catch (RemoteException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                } catch (JSONException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                } catch (SendIntentException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-
+                bp.purchase(DonateActivity.this, "gp1");
             }
         });
         Button purchaseBtn2 = (Button) findViewById(R.id.addBtn2);
@@ -148,51 +51,7 @@ public class DonateActivity extends Activity {
 
             @Override
             public void onClick(View v) {
-                ArrayList skuList = new ArrayList();
-                skuList.add(inappid2);
-                Bundle querySkus = new Bundle();
-                querySkus.putStringArrayList("ITEM_ID_LIST", skuList);
-                Bundle skuDetails;
-                try {
-                    skuDetails = mservice.getSkuDetails(3, getPackageName(),
-                            "inapp", querySkus);
-
-                    int response = skuDetails.getInt("RESPONSE_CODE");
-                    if (response == 0) {
-
-                        ArrayList<String> responseList = skuDetails
-                                .getStringArrayList("DETAILS_LIST");
-
-                        for (String thisResponse : responseList) {
-                            JSONObject object = new JSONObject(thisResponse);
-                            String sku = object.getString("productId");
-                            String price = object.getString("price");
-                            if (sku.equals(inappid2)) {
-                                System.out.println("price " + price);
-                                Bundle buyIntentBundle = mservice
-                                        .getBuyIntent(3, getPackageName(), sku,
-                                                "inapp",
-                                                "bGoa+V7g/yqDXvKRqq+JTFn4uQZbPiQJo4pf9RzJ");
-                                PendingIntent pendingIntent = buyIntentBundle
-                                        .getParcelable("BUY_INTENT");
-                                startIntentSenderForResult(
-                                        pendingIntent.getIntentSender(), 1001,
-                                        new Intent(), Integer.valueOf(0),
-                                        Integer.valueOf(0), Integer.valueOf(0));
-                            }
-                        }
-                    }
-                } catch (RemoteException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                } catch (JSONException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                } catch (SendIntentException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-
+                bp.purchase(DonateActivity.this, "gp2");
             }
         });
         Button purchaseBtn3 = (Button) findViewById(R.id.addBtn3);
@@ -200,51 +59,7 @@ public class DonateActivity extends Activity {
 
             @Override
             public void onClick(View v) {
-                ArrayList skuList = new ArrayList();
-                skuList.add(inappid3);
-                Bundle querySkus = new Bundle();
-                querySkus.putStringArrayList("ITEM_ID_LIST", skuList);
-                Bundle skuDetails;
-                try {
-                    skuDetails = mservice.getSkuDetails(3, getPackageName(),
-                            "inapp", querySkus);
-
-                    int response = skuDetails.getInt("RESPONSE_CODE");
-                    if (response == 0) {
-
-                        ArrayList<String> responseList = skuDetails
-                                .getStringArrayList("DETAILS_LIST");
-
-                        for (String thisResponse : responseList) {
-                            JSONObject object = new JSONObject(thisResponse);
-                            String sku = object.getString("productId");
-                            String price = object.getString("price");
-                            if (sku.equals(inappid3)) {
-                                System.out.println("price " + price);
-                                Bundle buyIntentBundle = mservice
-                                        .getBuyIntent(3, getPackageName(), sku,
-                                                "inapp",
-                                                "bGoa+V7g/yqDXvKRqq+JTFn4uQZbPiQJo4pf9RzJ");
-                                PendingIntent pendingIntent = buyIntentBundle
-                                        .getParcelable("BUY_INTENT");
-                                startIntentSenderForResult(
-                                        pendingIntent.getIntentSender(), 1001,
-                                        new Intent(), Integer.valueOf(0),
-                                        Integer.valueOf(0), Integer.valueOf(0));
-                            }
-                        }
-                    }
-                } catch (RemoteException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                } catch (JSONException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                } catch (SendIntentException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-
+                bp.purchase(DonateActivity.this, "gp3");
             }
         });
 
@@ -253,57 +68,7 @@ public class DonateActivity extends Activity {
 
             @Override
             public void onClick(View v) {
-                ArrayList skuList = new ArrayList();
-                skuList.add(inappid5);
-                Bundle querySkus = new Bundle();
-                querySkus.putStringArrayList("ITEM_ID_LIST", skuList);
-                Bundle skuDetails;
-                try {
-                    skuDetails = mservice.getSkuDetails(3, getPackageName(),
-                            "inapp", querySkus);
-
-                    int response = skuDetails.getInt("RESPONSE_CODE");
-                    if (response == 0) {
-
-                        ArrayList<String> responseList = skuDetails
-                                .getStringArrayList("DETAILS_LIST");
-
-                        for (String thisResponse : responseList) {
-                            JSONObject object = new JSONObject(thisResponse);
-                            String sku = object.getString("productId");
-                            String price = object.getString("price");
-                            if (sku.equals(inappid5)) {
-                                System.out.println("price " + price);
-                                Bundle buyIntentBundle = mservice
-                                        .getBuyIntent(3, getPackageName(), sku,
-                                                "inapp",
-                                                "bGoa+V7g/yqDXvKRqq+JTFn4uQZbPiQJo4pf9RzJ");
-                                PendingIntent pendingIntent = buyIntentBundle
-                                        .getParcelable("BUY_INTENT");
-                                startIntentSenderForResult(
-                                        pendingIntent.getIntentSender(), 1001,
-                                        new Intent(), Integer.valueOf(0),
-                                        Integer.valueOf(0), Integer.valueOf(0));
-
-                            }
-                        }
-                    } else {
-                        Toast.makeText(
-                                DonateActivity.this,
-                                "ASD!",
-                                Toast.LENGTH_LONG).show();
-                    }
-                } catch (RemoteException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                } catch (JSONException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                } catch (SendIntentException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-
+                bp.purchase(DonateActivity.this, "gp5");
             }
         });
 
@@ -321,42 +86,55 @@ public class DonateActivity extends Activity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 1001) {
-            String purchaseData = data.getStringExtra("INAPP_PURCHASE_DATA");
-
-            if (resultCode == RESULT_OK) {
-                try {
-                    JSONObject jo = new JSONObject(purchaseData);
-
-                    Snackbar.make(findViewById(android.R.id.content),
-                            "Thank you for your support!",
-                            Snackbar.LENGTH_LONG).setAction("Action", null).
-                            show();
-
-                } catch (JSONException e) {
-                    System.out.println("Failed to parse purchase data.");
-                    e.printStackTrace();
-                }
-            } else {
-                Snackbar.make(findViewById(android.R.id.content),
-                        "Transaction canceled",
-                        Snackbar.LENGTH_LONG).setAction("Action", null).
-                        show();
-
-               /* Toast.makeText(
-                        DonateActivity.this,
-                        "You can not perform this action right now",
-                        Toast.LENGTH_LONG).show();*/
-            }
-        }
+        if (!bp.handleActivityResult(requestCode, resultCode, data))
+            super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
     public void onDestroy() {
+        if (bp != null)
+            bp.release();
+
         super.onDestroy();
-        if (mservice != null) {
-            unbindService(mServiceConn);
-        }
+    }
+
+    @Override
+    public void onBillingInitialized() {
+        /*
+         * Called when BillingProcessor was initialized and it's ready to purchase
+         */
+    }
+
+    @Override
+    public void onProductPurchased(String productId, TransactionDetails details) {
+        /*
+         * Called when requested PRODUCT ID was successfully purchased
+         */
+
+        Snackbar.make(findViewById(android.R.id.content),
+                "Transaction done, Thank you!",
+                Snackbar.LENGTH_LONG).setAction("Action", null).
+                show();
+    }
+
+    @Override
+    public void onBillingError(int errorCode, Throwable error) {
+        /*
+         * Called when some error occurred. See Constants class for more details
+         */
+
+        Snackbar.make(findViewById(android.R.id.content),
+                "Sorry, an error occured",
+                Snackbar.LENGTH_LONG).setAction("Action", null).
+                show();
+    }
+
+    @Override
+    public void onPurchaseHistoryRestored() {
+        /*
+         * Called when purchase history was restored and the list of all owned PRODUCT ID's
+         * was loaded from Google Play
+         */
     }
 }
 
