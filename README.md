@@ -23,7 +23,6 @@ Used libraries
 [AboutLibraries](https://github.com/mikepenz/AboutLibraries)<br>
 [AppIntro](https://github.com/PaoloRotolo/AppIntro)<br>
 [GittyReporter](https://github.com/PaoloRotolo/GittyReporter)<br>
-[MaterialSearchView](https://github.com/MiguelCatalan/MaterialSearchView)<br>
 [Circular Reveal](https://github.com/ozodrukh/CircularReveal)<br>
 [FabTransitionActivity](https://github.com/coyarzun89/FabTransitionActivity)<br>
 [Android In-App Billing v3 Library](https://github.com/anjlab/android-inapp-billing-v3)<br>
