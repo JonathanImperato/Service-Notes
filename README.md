@@ -2,7 +2,7 @@
 
 Source code of: "Service-Notes".
 
-![Demo](https://github.com/Heromine/Service-Notes/blob/master/image/googleplay.png) 
+![Download via Google Play](https://github.com/Heromine/Service-Notes/blob/master/image/googleplay.png) 
 
 License
 -----------
