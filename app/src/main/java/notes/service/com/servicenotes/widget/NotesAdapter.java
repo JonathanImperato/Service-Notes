@@ -174,4 +174,5 @@ public class NotesAdapter extends BaseAdapter implements Filterable {
             noteDateText = (TextView) parent.findViewById(R.id.note_date);
         }
     }
+
 }

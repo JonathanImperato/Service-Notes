@@ -33,7 +33,7 @@ import com.github.fabtransitionactivity.SheetLayout;
 import com.github.javiersantos.appupdater.AppUpdater;
 import com.github.javiersantos.appupdater.enums.Display;
 import com.github.javiersantos.appupdater.enums.UpdateFrom;
-import com.lapism.searchview.SearchView;
+import com.lapism.searchview.view.SearchView;
 
 import java.util.ArrayList;
 
@@ -135,8 +135,10 @@ public class MainActivity extends RoboActionBarActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        mSearchView = (SearchView) findViewById(R.id.search_view);
+        mSearchView = (SearchView) findViewById(R.id.searchView);
         mSearchView.setStyle(0);
+        mSearchView.setVersion(1);
+        mSearchView.setTheme(0);
         mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -218,7 +220,7 @@ public class MainActivity extends RoboActionBarActivity
                 return true;
 
             case R.id.action_search:
-                mSearchView.showSearch(true);
+                mSearchView.show(true);
                 return true;
 
             default:
