@@ -2,8 +2,10 @@
 
 Source code of: "Service-Notes".
 
-![Download via Google Play](https://github.com/Heromine/Service-Notes/blob/master/image/googleplay.png) 
 
+<a href="https://play.google.com/store/apps/details?id=notes.service.com.servicenotes">
+![Download via Google Play](https://github.com/Heromine/Service-Notes/blob/master/image/googleplay.png) 
+</a>
 License
 -----------
 Licensed under the Apache License, Version 2.0
