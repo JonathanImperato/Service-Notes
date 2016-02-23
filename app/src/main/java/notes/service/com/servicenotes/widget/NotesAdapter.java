@@ -19,12 +19,6 @@ import java.util.List;
 import notes.service.com.servicenotes.R;
 import notes.service.com.servicenotes.data.Note;
 
-/**
- * Adaptador de notas. Actua como intermediario entre la vista y los datos.
- *
- * @author Daniel Pedraza Arcega
- * @see <a href="http://bit.ly/1vZt3ny">Building Layouts with an Adapter</a>
- */
 public class NotesAdapter extends BaseAdapter implements Filterable {
     /**
      * Wrapper para notas. Util para cambiar el fondo de los item seleccionados.
@@ -34,7 +28,8 @@ public class NotesAdapter extends BaseAdapter implements Filterable {
     private SQLiteDatabase mDb;
     private ArrayList<NotesAdapter.NoteViewWrapper> notesData;
     public Context context;
-    private ArrayList notesData2;
+
+    private ItemFilter mFilter = new ItemFilter();
 
     public void notifyDataSetChanged() {
         super.notifyDataSetChanged();
@@ -42,7 +37,7 @@ public class NotesAdapter extends BaseAdapter implements Filterable {
 
     @Override
     public Filter getFilter() {
-        return null;
+        return mFilter;
     }
 
 
@@ -72,6 +67,9 @@ public class NotesAdapter extends BaseAdapter implements Filterable {
     private static final DateFormat DATETIME_FORMAT = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM);
 
     private final List<NoteViewWrapper> data;
+    private List<NoteViewWrapper> filteredData;
+    //return the filtered data rather than the original data
+    //I think you could reset the filtered data back to the original onBackPressed from the search
 
     /**
      * Constructor.
@@ -79,6 +77,7 @@ public class NotesAdapter extends BaseAdapter implements Filterable {
      * @param data la lista de notas a usar como fuente de datos para este adaptador.
      */
     public NotesAdapter(List<NoteViewWrapper> data) {
+        this.filteredData = data;
         this.data = data;
     }
 
@@ -87,7 +86,7 @@ public class NotesAdapter extends BaseAdapter implements Filterable {
      */
     @Override
     public int getCount() {
-        return data.size();
+        return filteredData.size();
     }
 
     /**
@@ -96,7 +95,7 @@ public class NotesAdapter extends BaseAdapter implements Filterable {
      */
     @Override
     public NoteViewWrapper getItem(int position) {
-        return data.get(position);
+        return filteredData.get(position);
     }
 
     /**
@@ -119,7 +118,7 @@ public class NotesAdapter extends BaseAdapter implements Filterable {
 
         } else holder = (ViewHolder) convertView.getTag(); // ya existe, solo es reciclarlo
         // Inicializa la vista con los datos de la nota
-        NoteViewWrapper noteViewWrapper = data.get(position);
+        NoteViewWrapper noteViewWrapper = filteredData.get(position);
         holder.noteIdText.setText(String.valueOf(noteViewWrapper.note.getId()));
         holder.noteTitleText.setText(noteViewWrapper.note.getTitle());
         // se la nota è più di 80 caratteri"..."
@@ -134,11 +133,11 @@ public class NotesAdapter extends BaseAdapter implements Filterable {
             //cardsView.setBackgroundResource(R.drawable.selected_note);
             //holder.parent.setBackgroundColor(parent.getContext().getResources().getColor(R.color.selected_note));
             //LinearLayout.LayoutParams imageLayoutParams = new LinearLayout.LayoutParams(
-            //   LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+            //LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
 
         } else {
             CardView cardsView = (CardView) convertView.findViewById(R.id.note_cardboard);
-            // sfondo bianco quando nota non selezionata
+            //sfondo bianco quando nota non selezionata
             cardsView.setCardBackgroundColor(Color.WHITE);
             //holder.parent.setBackgroundColor(parent.getContext().getResources().getColor(android.R.color.transparent));
         }
@@ -173,6 +172,51 @@ public class NotesAdapter extends BaseAdapter implements Filterable {
             noteContentText = (TextView) parent.findViewById(R.id.note_content);
             noteDateText = (TextView) parent.findViewById(R.id.note_date);
         }
+    }
+    private class ItemFilter extends Filter {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+
+            String filterString = constraint.toString().toLowerCase();
+
+            FilterResults results = new FilterResults();
+
+
+            int count = data.size();
+            List<NoteViewWrapper> nlist = new ArrayList<>();
+
+            String filterableString;
+            String filterableStringDesc;
+            String filterableStringEmail;
+            String filterableStringAdres;
+            String filterableStringPhone;
+
+            for (int i = 0; i < count; i++) {
+                filterableString = data.get(i).getNote().getTitle();
+                filterableStringDesc = data.get(i).getNote().getContent();
+                filterableStringEmail = data.get(i).getNote().getEmails();
+                filterableStringAdres = data.get(i).getNote().getContent2();
+                filterableStringPhone = data.get(i).getNote().getPhone();
+                if (filterableString.toLowerCase().contains(filterString) || filterableStringPhone.toLowerCase().contains(filterString) ||  filterableStringAdres.toLowerCase().contains(filterString) || filterableStringEmail.toLowerCase().contains(filterString) || filterableStringDesc.toLowerCase().contains(filterString)) {
+                    //checks for matching word in title, content, email, phone and address
+                    //add any other content to search in this if statement
+                    nlist.add(data.get(i));
+                }
+            }
+
+            results.values = nlist;
+            results.count = nlist.size();
+
+            return results;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            filteredData = (ArrayList<NoteViewWrapper>) results.values;
+            notifyDataSetChanged();
+        }
+
     }
 
 }

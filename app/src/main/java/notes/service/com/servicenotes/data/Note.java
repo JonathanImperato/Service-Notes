@@ -3,11 +3,7 @@ package notes.service.com.servicenotes.data;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * Clase que representa una nota de la aplicacación.
- *
- * @author Daniel Pedraza Arcega
- */
+
 public class Note implements Serializable {
 
     private static final long serialVersionUID = -831930284387787342L;

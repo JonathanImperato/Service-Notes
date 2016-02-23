@@ -27,7 +27,6 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.github.fabtransitionactivity.SheetLayout;
 import com.github.javiersantos.appupdater.AppUpdater;
@@ -135,19 +134,25 @@ public class MainActivity extends RoboActionBarActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        mSearchView = (SearchView) findViewById(R.id.searchView);
+        mSearchView = (SearchView) findViewById(R.id.search_view);
         mSearchView.setStyle(0);
         mSearchView.setVersion(1);
         mSearchView.setTheme(0);
         mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                Toast.makeText(getApplicationContext(), query, Toast.LENGTH_SHORT).show();
+                listAdapter.getFilter().filter(query);
+                //filter the adapter dataset
+                updateView();
+                listAdapter.notifyDataSetChanged();
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
+                listAdapter.getFilter().filter(newText);
+                updateView();
+                listAdapter.notifyDataSetChanged();
                 return false;
             }
         });
@@ -158,6 +163,10 @@ public class MainActivity extends RoboActionBarActivity
 
             @Override
             public void onSearchViewClosed() {
+                listAdapter.getFilter().filter("");
+                listAdapter.notifyDataSetChanged();
+                updateView();
+                listAdapter.notifyDataSetChanged();
             }
         });
 
@@ -263,9 +272,7 @@ public class MainActivity extends RoboActionBarActivity
             Intent intent = new Intent(this, DisplayFileActivity.class);
             startActivity(intent);
             return true;
-
         } else if (id == R.id.nav_manage) {
-
         } */ else if (id == R.id.nav_feed) {
             showDialog(feedback);
 
@@ -332,7 +339,7 @@ public class MainActivity extends RoboActionBarActivity
                                         sender.sendMail("Service Notes feedback",
                                                 message.getText().toString(),
                                                 "servicenotesapp@gmail.com", //da...
-                                                "jonny99dj@gmail.com"); //a ...
+                                                "jonny99dj@gmail.com"); //a...
                                         Snackbar.make(MainActivity.this.findViewById(R.id.fab), getString(R.string.feedbacksent), Snackbar.LENGTH_LONG).setAction("Action", null).show();
 
                                     } catch (Exception e) {
@@ -347,13 +354,11 @@ public class MainActivity extends RoboActionBarActivity
                 );
                   /* alternative way with more than 1 receiver and with attachment
                                        Mail m = new Mail("my email ", "my password");
-
                                         String[] toArr = {"recivers email1", "recivers email2"};
                                         m.setTo(toArr); //inviare l'email a...
                                         m.setFrom("email sent from"); //l'email viene da...
                                         m.setSubject("Service Notes Subject");
                                         m.setBody("Email body.");
-
                                         try {
                                          //   m.addAttachment("/sdcard/filelocation");
                                             if(m.send()) {
@@ -365,7 +370,6 @@ public class MainActivity extends RoboActionBarActivity
                                             Toast.makeText(MainActivity.this, "There was a problem sending the email.", Toast.LENGTH_LONG).show();
                                             Log.e("MailApp", "Could not send email", e);
                                         }
-
                                         */
                 AlertDialog b = dialogBuilder.create();
                 b.show();
@@ -487,7 +491,6 @@ public class MainActivity extends RoboActionBarActivity
             toRemoveList.add(noteViewWrapper);
             noteDAO.delete(noteViewWrapper.getNote());
             Snackbar.make(this.findViewById(R.id.fab), "Nota eliminata con successo", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-
         }
         // Y luego de la vista (no al mismo tiempo porque pierdo las posiciones que hay que borrar)
         for (NotesAdapter.NoteViewWrapper noteToRemove : toRemoveList)
@@ -496,11 +499,6 @@ public class MainActivity extends RoboActionBarActivity
         listAdapter.notifyDataSetChanged();
     }
 
-    /**
-     * Actualiza una nota en la lista y la fuente de datos.
-     *
-     * @param data los datos de la actividad de edición de notas.
-     */
     private void updateNote(Intent data) {
         Note updatedNote = ViewNoteActivity.getExtraUpdatedNote(data);
         noteDAO.update(updatedNote);
@@ -513,7 +511,6 @@ public class MainActivity extends RoboActionBarActivity
                 noteViewWrapper.getNote().setEmails(updatedNote.getEmails());
                 noteViewWrapper.getNote().setPhone(updatedNote.getPhone());
                 noteViewWrapper.getNote().setUpdatedAt(updatedNote.getUpdatedAt());
-
             }
         }
         listAdapter.notifyDataSetChanged();

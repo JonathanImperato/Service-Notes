@@ -8,11 +8,7 @@ import com.google.inject.name.Names;
 
 import notes.service.com.servicenotes.data.source.sqlite.NotesDatabaseHelper;
 
-/**
- * Clase para cablear dependencias de la aplicación
- *
- * @author Daniel Pedraza Arcega
- */
+
 public class ConfigModule extends AbstractModule {
 
     private final Application context;

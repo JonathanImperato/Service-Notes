@@ -23,20 +23,13 @@ public class NoteSQLiteDAO implements NoteDAO {
 
     private final SQLiteOpenHelper databaseHelper;
 
-    /**
-     * Construye un NoteSQLiteDAO usando el SQLiteOpenHelper dado.
-     *
-     * @param databaseHelper un SQLiteOpenHelper.
-     */
+ 
+ 
     @Inject
     public NoteSQLiteDAO(@Named("NotesDbHelper") SQLiteOpenHelper databaseHelper) {
         this.databaseHelper = databaseHelper;
     }
-
-    /**
-     * @see <a href="http://bit.ly/1whYCa6">Read Information from a Database</a>
-     * @return recupera todas las notas de la tabla {@link NoteEntry#TABLE_NAME}
-     */
+	
     @Override
     public ArrayList<Note> fetchAll() {
         ArrayList<Note> result = null;
@@ -81,12 +74,7 @@ public class NoteSQLiteDAO implements NoteDAO {
         return result;
     }
 
-    /**
-     * Inserta una nota en la tabla {@link NoteEntry#TABLE_NAME}.
-     *
-     * @see <a href="http://bit.ly/1D3oTNG">Put Information into a Database</a>
-     * @param note la nota a insertar.
-     */
+	
     @Override
     public void insert(Note note) {
         SQLiteDatabase database = databaseHelper.getWritableDatabase();

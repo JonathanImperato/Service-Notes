@@ -1,10 +1,6 @@
 package notes.service.com.servicenotes.util;
 
-/**
- * Clase con metodos y constantes miscelaneos de String.
- *
- * @author Daniel Pedraza Arcega
- */
+
 public final class Strings {
 
     /** Cadena vacia "". */

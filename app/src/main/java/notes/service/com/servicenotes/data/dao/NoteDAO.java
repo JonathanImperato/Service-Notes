@@ -7,11 +7,7 @@ import java.util.List;
 import notes.service.com.servicenotes.data.Note;
 import notes.service.com.servicenotes.data.dao.impl.sqlite.NoteSQLiteDAO;
 
-/**
- * Interfaz que deben implementar todas las clases que sean fuente de datos de notas.
- *
- * @author Daniel Pedraza Arcega
- */
+
 @ImplementedBy(NoteSQLiteDAO.class)
 public interface NoteDAO {
 
